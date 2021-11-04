@@ -96,6 +96,8 @@
 #define PLAYER_DEF_Y 0x8C
 
 #define BIRDS_COUNT 0x04
+#define BIRDS_ANIM_LENGTH 0x04
+#define BIRDS_ANIM_DELAY 0x05
 #define BIRDS_WIDTH 0x10
 #define BIRDS_HEIGHT 0x08
 #define BIRDS_TAG_HIT 0x05

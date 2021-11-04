@@ -9,8 +9,6 @@
 
 unsigned char pad1;
 unsigned char pad1_new;
-unsigned char pad2;
-
 
 unsigned char tmp;
 unsigned char state;
@@ -35,8 +33,6 @@ struct StGrass grass = {
 
 #pragma bss-name(push, "BSS")
 
-unsigned char debug = 0;
-
 unsigned char points = 0;
 unsigned int score = 0;
 
@@ -44,7 +40,9 @@ unsigned char game_calc_state = 0;
 
 unsigned char bird_x[BIRDS_COUNT];
 unsigned char bird_y[BIRDS_COUNT];
-unsigned char bird_sprite[BIRDS_COUNT];
+unsigned char bird_sprite;
+unsigned char bird_x_sprite;
+unsigned char bird_anim;
 unsigned char bird_state[BIRDS_COUNT];
 unsigned char bird_health[BIRDS_COUNT];
 unsigned char bird_tag[BIRDS_COUNT];
@@ -433,17 +431,31 @@ void game_initial_values_set(void) {
 	score = 0;
 	game.level = 1;
 	game.lives = 3;
+	game.max_play_time = 10;
+	
+	grass.delay_max = 20;
+	grass.instant_count = 1;
+	grass.col_for_point = 18;
+
 	player.move_delay = 0; 
 	player.move_max_delay = 2;
 	player.move_increase = 0;
 	player.move_max_increase = 0;
+	
 	player.abilities.selection = 0;
 	player.abilities.list[ABILITY_CUT_SPEED] = 0;
 	player.abilities.list[ABILITY_CUT_POWER] = 0;
 	player.abilities.list[ABILITY_CUT_SIZE] = 0;
 	player.abilities.list[ABILITY_MOVE_SPEED] = 0;
+	player.abilities.list[ABILITY_SPECIAL] = 0;
 	player.abilities.elevel = 0;
 	
+	player.cut.power = 1;
+	player.cut.size = 2;
+	player.cut.delay = 10;
+	player.cut.max_delay = 10;
+	player.cut.count = 0;
+		 
 	set_vram_buffer(); 
 	ppu_off();
 	bank_spr(1);
@@ -491,7 +503,7 @@ void process_main_game(void) {
 								for (x = 0; x < BIRDS_COUNT; ++x) {
 									if (bird_state[x] == 0) {
 										if (game.level > 8) tmp = rand8() % 0x01;
-											else if(game.level > 5) tmp = rand8() % 0x02;
+											else if (game.level > 5) tmp = rand8() % 0x02;
 												else tmp = rand8() % 0x03;
 										if (tmp == 0) game_create_enemy(x);
 										break;
@@ -899,7 +911,7 @@ void game_grass_overgrow(void) {
 			grass.height[x] = single_sprout;
 			if (y == 0x07) ++index;
 		}
-		if (index == 6) game.state = GAME_ST_LEVEL_END_LOSE;
+		if (index == 0x06) game.state = GAME_ST_LEVEL_END_LOSE;
 	}
 }
 
@@ -1057,6 +1069,8 @@ void game_create_enemy(char bird_num) {
 		bird_tag[bird_num] = 0;
 		bird_y[bird_num] = 30 + (rand8() >> 3);
 		bird_pallete[bird_num] = rand8() % 3 + 1;
+		//bird_sprite[bird_num] = 0;
+		//bird_x_sprite[bird_num] = 1;
 		bird_health[bird_num] = bird_pallete[bird_num] == 3 ? 4 : bird_pallete[bird_num];
 		if (game.level >= 5) ++bird_health[bird_num];
 		if (game.level >= 10) ++bird_health[bird_num];
@@ -1067,17 +1081,19 @@ void game_create_enemy(char bird_num) {
 //check if birds have collision with small scythe 
 //process hit and death of birds
 void game_enemy_processing(void) {
+	++bird_anim;
+	if (bird_anim == BIRDS_ANIM_DELAY) {
+		bird_anim = 1;
+		bird_sprite += bird_x_sprite;
+		if (bird_sprite == BIRDS_ANIM_LENGTH) bird_x_sprite = -1;
+		if (bird_sprite == 0) bird_x_sprite = 1;
+	}		
 	for (x = 0; x < BIRDS_COUNT; ++x) {
 		if (bird_state[x] != 0) {
-			++bird_state[x];
 			--bird_speed_delay[x];
 			if (bird_speed_delay[x] == 0) {
 				bird_x[x] += bird_x_speed[x];
 				bird_speed_delay[x] = bird_health[x];
-			}
-			if (bird_state[x] == 0x0A) {
-				bird_state[x] = 1;
-				bird_sprite[x] = bird_sprite[x] == 1 ? 0 : 1;
 			}
 			if (bird_x[x] <= 1 || bird_x[x] > 235) bird_state[x] = 0;
 			if (small_scythe.state != 0 && bird_tag[x] == 0) {
@@ -1122,11 +1138,11 @@ void game_enemy_processing(void) {
 			if (bird_tag[x] == 0 || bird_tag[x] > BIRDS_TAG_HIT)
 			{
 				if (bird_x_speed[x] == 1) {
-					oam_spr(bird_x[x] + 0x08, bird_y[x] - tmp, 0x19, bird_pallete[x] - 1 | OAM_FLIP_H);
-					oam_spr(bird_x[x], bird_y[x] + tmp, 0x1A + bird_sprite[x], bird_pallete[x] - 1 | OAM_FLIP_H	);
+					oam_spr(bird_x[x] + 0x08, bird_y[x] - tmp, 0x29, bird_pallete[x] - 1 | OAM_FLIP_H);
+					oam_spr(bird_x[x], bird_y[x] + tmp, 0x2A + bird_sprite, bird_pallete[x] - 1 | OAM_FLIP_H	);
 				} else {
-					oam_spr(bird_x[x], bird_y[x] - tmp, 0x19, bird_pallete[x] - 1);
-					oam_spr(bird_x[x] + 0x08, bird_y[x] + tmp, 0x1A + bird_sprite[x], bird_pallete[x] - 1);
+					oam_spr(bird_x[x], bird_y[x] - tmp, 0x29, bird_pallete[x] - 1);
+					oam_spr(bird_x[x] + 0x08, bird_y[x] + tmp, 0x2A + bird_sprite, bird_pallete[x] - 1);
 				}
 			}
 		}
@@ -1463,6 +1479,7 @@ void main (void) {
 	while (1) {
 		game_initial_values_set();
 		process_title();
+		points = 99;
 		if (points == 99) process_upgrades();
 		process_main_game();
 		process_game_end();
