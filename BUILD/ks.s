@@ -108,7 +108,6 @@
 	.export		_process_game_end
 	.export		_pad1
 	.export		_pad1_new
-	.export		_pad2
 	.export		_tmp
 	.export		_state
 	.export		_index
@@ -121,13 +120,14 @@
 	.export		_rain_drop_x
 	.export		_rain_drop_y
 	.export		_grass
-	.export		_debug
 	.export		_points
 	.export		_score
 	.export		_game_calc_state
 	.export		_bird_x
 	.export		_bird_y
 	.export		_bird_sprite
+	.export		_bird_x_sprite
+	.export		_bird_anim
 	.export		_bird_state
 	.export		_bird_health
 	.export		_bird_tag
@@ -150,8 +150,6 @@ _grass:
 	.byte	$01
 	.byte	$12
 	.res	32,$00
-_debug:
-	.byte	$00
 _points:
 	.byte	$00
 _score:
@@ -1244,121 +1242,121 @@ _abilities_icons:
 	.byte	$89
 	.byte	$98
 	.byte	$99
-L10AB:
+L10B4:
 	.byte	$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
 	.byte	$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
 	.byte	$00
-L103E	:=	L10AB+0
-L1032	:=	L10AB+0
-L0EA6:
+L1047	:=	L10B4+0
+L103B	:=	L10B4+0
+L0EAF:
 	.byte	$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20
 	.byte	$50,$4F,$49,$4E,$54,$53,$20,$20,$20,$20,$00
-L0785:
+L0783:
 	.byte	$20,$20,$20,$4B,$4F,$53,$41,$52,$49,$20,$43,$4F,$44,$45,$20,$41
 	.byte	$43,$54,$49,$56,$41,$54,$45,$44,$20,$20,$00
-L076F:
+L076D:
 	.byte	$53,$45,$41,$52,$43,$48,$49,$4E,$47,$20,$46,$4F,$52,$20,$41,$4C
 	.byte	$54,$45,$52,$4E,$41,$54,$49,$56,$45,$53,$00
-L1105:
+L110E:
 	.byte	$54,$48,$41,$4E,$4B,$20,$59,$4F,$55,$20,$46,$4F,$52,$20,$50,$4C
 	.byte	$41,$59,$49,$4E,$47,$21,$00
-L0740:
+L073E:
 	.byte	$4B,$4F,$4E,$41,$4D,$49,$20,$43,$4F,$44,$45,$20,$4E,$4F,$54,$20
 	.byte	$46,$4F,$55,$4E,$44,$00
-L1145:
+L114E:
 	.byte	$50,$52,$45,$53,$53,$20,$53,$54,$41,$52,$54,$20,$54,$4F,$20,$52
 	.byte	$45,$54,$55,$52,$4E,$00
-L0642	:=	L10AB+12
-L10D5:
+L0640	:=	L10B4+12
+L10DE:
 	.byte	$4F,$52,$49,$47,$49,$4E,$41,$4C,$20,$43,$4F,$4D,$49,$43,$53,$20
 	.byte	$42,$59,$00
-L078F	:=	L10AB+15
-L10E5:
+L078D	:=	L10B4+15
+L10EE:
 	.byte	$53,$50,$45,$43,$49,$41,$4C,$20,$54,$48,$41,$4E,$4B,$53,$20,$54
 	.byte	$4F,$00
-L0779	:=	L10AB+15
-L10BD:
+L0777	:=	L10B4+15
+L10C6:
 	.byte	$4F,$4E,$45,$20,$54,$48,$4F,$55,$53,$41,$4E,$44,$20,$4D,$41,$4E
 	.byte	$00
-L06FD	:=	L10BD+0
-L10C5:
+L06FB	:=	L10C6+0
+L10CE:
 	.byte	$47,$41,$4D,$45,$20,$43,$52,$45,$41,$54,$45,$44,$20,$42,$59,$00
-L0F3E:
+L0F47:
 	.byte	$20,$41,$43,$54,$49,$56,$41,$54,$45,$44,$20,$20,$20,$20,$00
-L0F34:
+L0F3D:
 	.byte	$20,$4D,$4F,$56,$45,$20,$41,$4E,$44,$20,$43,$55,$54,$20,$00
-L0EFB:
+L0F04:
 	.byte	$20,$41,$42,$49,$4C,$49,$54,$49,$45,$53,$20,$20,$20,$20,$00
-L0F11:
+L0F1A:
 	.byte	$20,$50,$4F,$57,$45,$52,$20,$53,$4C,$41,$53,$48,$20,$20,$00
-L0ECF:
+L0ED8:
 	.byte	$20,$53,$4D,$41,$4C,$4C,$20,$53,$43,$59,$54,$48,$45,$20,$00
-L0F05:
+L0F0E:
 	.byte	$20,$50,$4F,$57,$45,$52,$5B,$20,$20,$20,$20,$20,$20,$20,$00
-L0ED9:
+L0EE2:
 	.byte	$20,$5C,$20,$5B,$20,$41,$20,$20,$20,$20,$20,$20,$20,$20,$00
-L0EEF:
+L0EF8:
 	.byte	$20,$5E,$20,$5E,$20,$4F,$52,$20,$5F,$20,$5F,$20,$20,$20,$00
-L0F1B:
+L0F24:
 	.byte	$20,$5D,$20,$5D,$20,$5D,$20,$20,$20,$20,$20,$20,$20,$20,$00
-L0EE5:
+L0EEE:
 	.byte	$20,$44,$41,$53,$48,$20,$20,$20,$20,$20,$20,$20,$20,$20,$00
-L10DD:
+L10E6:
 	.byte	$43,$59,$4E,$49,$43,$20,$4D,$41,$4E,$53,$49,$4F,$4E,$00
-L10CD:
+L10D6:
 	.byte	$53,$50,$45,$52,$4C,$49,$4E,$47,$53,$4B,$41,$55,$5A,$00
-L114E:
-	.byte	$54,$4F,$20,$4D,$41,$49,$4E,$20,$4D,$45,$4E,$55,$00
 L1157:
+	.byte	$54,$4F,$20,$4D,$41,$49,$4E,$20,$4D,$45,$4E,$55,$00
+L1160:
 	.byte	$46,$49,$4E,$41,$4C,$20,$53,$43,$4F,$52,$45,$00
-L0FFC:
+L1005:
 	.byte	$43,$55,$54,$20,$53,$50,$45,$45,$44,$20,$00
-L0FF5:
+L0FFE:
 	.byte	$43,$55,$54,$20,$50,$4F,$57,$45,$52,$20,$00
-L0FEE:
+L0FF7:
 	.byte	$43,$55,$54,$20,$57,$49,$44,$54,$48,$20,$00
-L100A:
+L1013:
 	.byte	$53,$50,$45,$43,$49,$41,$4C,$20,$20,$20,$00
-L1003:
+L100C:
 	.byte	$4D,$4F,$56,$45,$20,$53,$50,$45,$45,$44,$00
-L113C:
+L1145:
 	.byte	$47,$41,$4D,$45,$20,$4F,$56,$45,$52,$00
-L0669:
+L0667:
 	.byte	$4C,$45,$56,$45,$4C,$20,$20,$20,$00
-L067D:
+L067B:
 	.byte	$46,$4C,$41,$53,$48,$20,$20,$20,$00
-L0687:
+L0685:
 	.byte	$52,$45,$54,$55,$52,$4E,$20,$20,$00
-L0673:
+L0671:
 	.byte	$45,$4E,$44,$4C,$45,$53,$53,$20,$00
-L10F5:
+L10FE:
 	.byte	$4E,$45,$53,$44,$4F,$55,$47,$00
-L065D:
+L065B:
 	.byte	$4F,$50,$54,$49,$4F,$4E,$53,$00
-L0623:
+L0621:
 	.byte	$4E,$4F,$52,$4D,$41,$4C,$00
-L0617:
+L0615:
 	.byte	$45,$41,$53,$59,$20,$20,$00
-L062F:
+L062D:
 	.byte	$48,$41,$52,$44,$20,$20,$00
-L08B5	:=	L1157+6
-L08C7:
+L08C8	:=	L1160+6
+L08DA:
 	.byte	$4C,$45,$56,$45,$4C,$00
-L05AF	:=	L10AB+27
-L10ED:
+L05AD	:=	L10B4+27
+L10F6:
 	.byte	$53,$48,$49,$52,$55,$00
-L05AC:
+L05AA:
 	.byte	$53,$54,$41,$52,$54,$00
-L0653	:=	L05AC+0
-L0607:
+L0651	:=	L05AA+0
+L0605:
 	.byte	$4F,$46,$46,$20,$00
-L05F8:
+L05F6:
 	.byte	$4F,$4E,$20,$00
-L05F5:
+L05F3:
 	.byte	$4F,$46,$46,$00
-L0604	:=	L10DD+11
-L10FD	:=	L10AB+31
-L0F27:
+L0602	:=	L10E6+11
+L1106	:=	L10B4+31
+L0F30:
 	.byte	$5B,$00
 
 .segment	"BSS"
@@ -1367,8 +1365,6 @@ L0F27:
 _pad1:
 	.res	1,$00
 _pad1_new:
-	.res	1,$00
-_pad2:
 	.res	1,$00
 _tmp:
 	.res	1,$00
@@ -1396,7 +1392,11 @@ _bird_x:
 _bird_y:
 	.res	4,$00
 _bird_sprite:
-	.res	4,$00
+	.res	1,$00
+_bird_x_sprite:
+	.res	1,$00
+_bird_anim:
+	.res	1,$00
 _bird_state:
 	.res	4,$00
 _bird_health:
@@ -1627,17 +1627,17 @@ _bird_pallete:
 ;
 	lda     #$00
 	sta     _x
-L118A:	lda     _x
+L1195:	lda     _x
 	cmp     #$20
-	beq     L048D
+	beq     L048B
 ;
 ; for(y = 0x00; y != 0x1D; ++y) {
 ;
 	lda     #$00
 	sta     _y
-L118B:	lda     _y
+L1196:	lda     _y
 	cmp     #$1D
-	beq     L118C
+	beq     L1197
 ;
 ; vram_put(0x00);
 ;
@@ -1647,16 +1647,16 @@ L118B:	lda     _y
 ; for(y = 0x00; y != 0x1D; ++y) {
 ;
 	inc     _y
-	jmp     L118B
+	jmp     L1196
 ;
 ; for(x = 0x00; x != 0x20; ++x) {
 ;
-L118C:	inc     _x
-	jmp     L118A
+L1197:	inc     _x
+	jmp     L1195
 ;
 ; oam_clear();
 ;
-L048D:	jmp     _oam_clear
+L048B:	jmp     _oam_clear
 
 .endproc
 
@@ -1729,10 +1729,10 @@ L048D:	jmp     _oam_clear
 ;
 	lda     #$01
 	sta     _tmp
-L04AC:	ldy     #$00
+L04AA:	ldy     #$00
 	lda     (sp),y
 	cmp     _tmp
-	beq     L04AD
+	beq     L04AB
 ;
 ; nmi_wait_and_prepare();
 ;
@@ -1742,24 +1742,24 @@ L04AC:	ldy     #$00
 ;
 	lda     _state
 	cmp     #$01
-	beq     L04AD
+	beq     L04AB
 ;
 ; if (pad1_new & PAD_START) state = 1;
 ;
 	lda     _pad1_new
 	and     #$10
-	beq     L118E
+	beq     L1199
 	lda     #$01
 	sta     _state
 ;
 ; for(tmp = 1; tmp != delay_length; ++tmp) {
 ;
-L118E:	inc     _tmp
-	jmp     L04AC
+L1199:	inc     _tmp
+	jmp     L04AA
 ;
 ; }
 ;
-L04AD:	jmp     incsp1
+L04AB:	jmp     incsp1
 
 .endproc
 
@@ -1789,14 +1789,14 @@ L04AD:	jmp     incsp1
 ;
 ; if (!*str) break;
 ;
-L04BE:	ldy     #$01
+L04BC:	ldy     #$01
 	lda     (sp),y
 	sta     ptr1+1
 	dey
 	lda     (sp),y
 	sta     ptr1
 	lda     (ptr1),y
-	beq     L04BF
+	beq     L04BD
 ;
 ; vram_put((*str++) - 0x00);
 ;
@@ -1809,20 +1809,20 @@ L04BE:	ldy     #$01
 	stx     regsave+1
 	clc
 	adc     #$01
-	bcc     L04C7
+	bcc     L04C5
 	inx
-L04C7:	jsr     stax0sp
+L04C5:	jsr     stax0sp
 	ldy     #$00
 	lda     (regsave),y
 	jsr     _vram_put
 ;
 ; while(1) {
 ;
-	jmp     L04BE
+	jmp     L04BC
 ;
 ; } 
 ;
-L04BF:	jmp     incsp4
+L04BD:	jmp     incsp4
 
 .endproc
 
@@ -1848,7 +1848,7 @@ L04BF:	jmp     incsp4
 ;
 ; if (!*str) break;
 ;
-L04CA:	ldy     #$03
+L04C8:	ldy     #$03
 	lda     (sp),y
 	sta     ptr1+1
 	dey
@@ -1856,14 +1856,14 @@ L04CA:	ldy     #$03
 	sta     ptr1
 	ldy     #$00
 	lda     (ptr1),y
-	beq     L04CB
+	beq     L04C9
 ;
 ; if (npos == num) {
 ;
 	lda     (sp),y
 	iny
 	cmp     (sp),y
-	bne     L04D0
+	bne     L04CE
 ;
 ; one_vram_buffer(*str, address);
 ;
@@ -1889,16 +1889,16 @@ L04CA:	ldy     #$03
 ;
 ; *str++;
 ;
-L04D0:	ldy     #$03
+L04CE:	ldy     #$03
 	lda     (sp),y
 	tax
 	dey
 	lda     (sp),y
 	clc
 	adc     #$01
-	bcc     L04D7
+	bcc     L04D5
 	inx
-L04D7:	jsr     staxysp
+L04D5:	jsr     staxysp
 ;
 ; ++npos;
 ;
@@ -1910,11 +1910,11 @@ L04D7:	jsr     staxysp
 ;
 ; while(1) {
 ;
-	jmp     L04CA
+	jmp     L04C8
 ;
 ; } 
 ;
-L04CB:	jmp     incsp6
+L04C9:	jmp     incsp6
 
 .endproc
 
@@ -1949,11 +1949,11 @@ L04CB:	jmp     incsp6
 ;
 ; while(adr != 0) {
 ;
-	jmp     L04E0
+	jmp     L04DE
 ;
 ; ++x;
 ;
-L04DE:	inc     _x
+L04DC:	inc     _x
 ;
 ; adr /= 10;
 ;
@@ -1967,9 +1967,9 @@ L04DE:	inc     _x
 ;
 ; while(adr != 0) {
 ;
-L04E0:	lda     _adr
+L04DE:	lda     _adr
 	ora     _adr+1
-	bne     L04DE
+	bne     L04DC
 ;
 ; if(number == 0) {
 ;
@@ -1977,7 +1977,7 @@ L04E0:	lda     _adr
 	lda     (sp),y
 	iny
 	ora     (sp),y
-	bne     L04E6
+	bne     L04E4
 ;
 ; vram_adr(address + 1);
 ;
@@ -1988,9 +1988,9 @@ L04E0:	lda     _adr
 	lda     (sp),y
 	clc
 	adc     #$01
-	bcc     L04EB
+	bcc     L04E9
 	inx
-L04EB:	jsr     _vram_adr
+L04E9:	jsr     _vram_adr
 ;
 ; vram_put(CHR_ZERO);
 ;
@@ -2003,11 +2003,11 @@ L04EB:	jsr     _vram_adr
 ;
 ; for(y = 0x00; y != x; ++y) {
 ;
-L04E6:	lda     #$00
+L04E4:	lda     #$00
 	sta     _y
-L1195:	lda     _x
+L11A0:	lda     _x
 	cmp     _y
-	beq     L04F0
+	beq     L04EE
 ;
 ; adr = number % 10;
 ;
@@ -2036,9 +2036,9 @@ L1195:	lda     _x
 	lda     (sp),y
 	clc
 	adc     _x
-	bcc     L1190
+	bcc     L119B
 	inx
-L1190:	sec
+L119B:	sec
 	sbc     _y
 	pha
 	txa
@@ -2057,33 +2057,33 @@ L1190:	sec
 ; for(y = 0x00; y != x; ++y) {
 ;
 	inc     _y
-	jmp     L1195
+	jmp     L11A0
 ;
 ; vram_adr(address + x + 1);
 ;
-L04F0:	ldy     #$04
+L04EE:	ldy     #$04
 	lda     (sp),y
 	tax
 	dey
 	lda     (sp),y
 	clc
 	adc     _x
-	bcc     L1194
+	bcc     L119F
 	inx
 	clc
-L1194:	adc     #$01
-	bcc     L0502
+L119F:	adc     #$01
+	bcc     L0500
 	inx
-L0502:	jsr     _vram_adr
+L0500:	jsr     _vram_adr
 ;
 ; for(y = 0x00; y != zero_count; ++y) {
 ;
 	lda     #$00
 	sta     _y
-L0503:	ldy     #$00
+L0501:	ldy     #$00
 	lda     (sp),y
 	cmp     _y
-	beq     L0504
+	beq     L0502
 ;
 ; vram_put(CHR_ZERO);
 ;
@@ -2093,11 +2093,11 @@ L0503:	ldy     #$00
 ; for(y = 0x00; y != zero_count; ++y) {
 ;
 	inc     _y
-	jmp     L0503
+	jmp     L0501
 ;
 ; }
 ;
-L0504:	jmp     incsp5
+L0502:	jmp     incsp5
 
 .endproc
 
@@ -2116,9 +2116,9 @@ L0504:	jmp     incsp5
 ;
 	lda     #$00
 	sta     _x
-L1196:	lda     _x
+L11A1:	lda     _x
 	cmp     #$08
-	beq     L1197
+	beq     L11A2
 ;
 ; rain_drop_x[x] = 0;
 ;
@@ -2134,11 +2134,11 @@ L1196:	lda     _x
 ; for(x = 0x00; x != RAIN_COUNT; ++x) {
 ;
 	inc     _x
-	jmp     L1196
+	jmp     L11A1
 ;
 ; points = 1;
 ;
-L1197:	lda     #$01
+L11A2:	lda     #$01
 	sta     _points
 ;
 ; score = 0;
@@ -2156,6 +2156,26 @@ L1197:	lda     #$01
 ;
 	lda     #$03
 	sta     _game+7
+;
+; game.max_play_time = 10;
+;
+	lda     #$0A
+	sta     _game+5
+;
+; grass.delay_max = 20;
+;
+	lda     #$14
+	sta     _grass+1
+;
+; grass.instant_count = 1;
+;
+	lda     #$01
+	sta     _grass+2
+;
+; grass.col_for_point = 18;
+;
+	lda     #$12
+	sta     _grass+3
 ;
 ; player.move_delay = 0; 
 ;
@@ -2196,9 +2216,37 @@ L1197:	lda     #$01
 ;
 	sta     _player+20
 ;
+; player.abilities.list[ABILITY_SPECIAL] = 0;
+;
+	sta     _player+21
+;
 ; player.abilities.elevel = 0;
 ;
 	sta     _player+22
+;
+; player.cut.power = 1;
+;
+	lda     #$01
+	sta     _player+9
+;
+; player.cut.size = 2;
+;
+	lda     #$02
+	sta     _player+10
+;
+; player.cut.delay = 10;
+;
+	lda     #$0A
+	sta     _player+12
+;
+; player.cut.max_delay = 10;
+;
+	sta     _player+13
+;
+; player.cut.count = 0;
+;
+	lda     #$00
+	sta     _player+15
 ;
 ; set_vram_buffer(); 
 ;
@@ -2258,7 +2306,7 @@ L1197:	lda     #$01
 ;
 	lda     _game+3
 	cmp     #$03
-	jne     L11A6
+	jne     L11B1
 ;
 ; ++game.level;
 ;
@@ -2270,101 +2318,101 @@ L1197:	lda     #$01
 ;
 ; }
 ;
-	beq     L119A
+	beq     L11A5
 	cmp     #$01
-	beq     L119E
+	beq     L11A9
 	cmp     #$02
-	beq     L11A3
-	jmp     L11A6
+	beq     L11AE
+	jmp     L11B1
 ;
 ; if (grass.delay_max != 10) --grass.delay_max;
 ;
-L119A:	lda     _grass+1
+L11A5:	lda     _grass+1
 	cmp     #$0A
-	beq     L119B
+	beq     L11A6
 	dec     _grass+1
 ;
 ; if (game.level % 3 == 0 && grass.instant_count != 10) ++grass.instant_count;
 ;
-L119B:	lda     _game
+L11A6:	lda     _game
 	jsr     pusha0
 	lda     #$03
 	jsr     tosumoda0
 	cpx     #$00
-	bne     L119D
+	bne     L11A8
 	cmp     #$00
-	bne     L119D
+	bne     L11A8
 	lda     _grass+2
 	cmp     #$0A
-	beq     L119D
+	beq     L11A8
 	inc     _grass+2
 ;
 ; if (game.max_play_time != 60) game.max_play_time += 2;
 ;
-L119D:	lda     _game+5
+L11A8:	lda     _game+5
 	cmp     #$3C
-	beq     L11A6
+	beq     L11B1
 	lda     #$02
 ;
 ; break;
 ;
-	jmp     L11B1
+	jmp     L11BC
 ;
 ; if (grass.delay_max != 8) --grass.delay_max;
 ;
-L119E:	lda     _grass+1
+L11A9:	lda     _grass+1
 	cmp     #$08
-	beq     L119F
+	beq     L11AA
 	dec     _grass+1
 ;
 ; if (game.level % 2 == 0 && grass.instant_count != 10) ++grass.instant_count;
 ;
-L119F:	lda     _game
+L11AA:	lda     _game
 	and     #$01
-	bne     L11A2
+	bne     L11AD
 	lda     _grass+2
 	cmp     #$0A
-	beq     L11A2
+	beq     L11AD
 	inc     _grass+2
 ;
 ; if (game.max_play_time != 60) game.max_play_time += 4;
 ;
-L11A2:	lda     _game+5
+L11AD:	lda     _game+5
 	cmp     #$3C
-	beq     L11A6
+	beq     L11B1
 	lda     #$04
 ;
 ; break;
 ;
-	jmp     L11B1
+	jmp     L11BC
 ;
 ; if (grass.delay_max != 6) --grass.delay_max;
 ;
-L11A3:	lda     _grass+1
+L11AE:	lda     _grass+1
 	cmp     #$06
-	beq     L11A4
+	beq     L11AF
 	dec     _grass+1
 ;
 ; if (grass.instant_count != 10) ++grass.instant_count;
 ;
-L11A4:	lda     _grass+2
+L11AF:	lda     _grass+2
 	cmp     #$0A
-	beq     L11A5
+	beq     L11B0
 	inc     _grass+2
 ;
 ; if (game.max_play_time != 60) game.max_play_time += 6;
 ;
-L11A5:	lda     _game+5
+L11B0:	lda     _game+5
 	cmp     #$3C
-	beq     L11A6
+	beq     L11B1
 	lda     #$06
-L11B1:	clc
+L11BC:	clc
 	adc     _game+5
 	sta     _game+5
 ;
 ; game.play_time = game.max_play_time;
 ;
-L11A6:	lda     _game+5
+L11B1:	lda     _game+5
 	sta     _game+4
 ;
 ; game.state = GAME_ST_LEVEL_PLAYING;
@@ -2387,17 +2435,17 @@ L11A6:	lda     _game+5
 ;
 	lda     #$00
 	sta     _x
-L11A7:	lda     _x
+L11B2:	lda     _x
 	cmp     #$20
-	beq     L11AA
+	beq     L11B5
 ;
 ; for(y = 0x00; y != 0x1D; ++y) 
 ;
 	lda     #$00
 	sta     _y
-L11A8:	lda     _y
+L11B3:	lda     _y
 	cmp     #$1D
-	beq     L11A9
+	beq     L11B4
 ;
 ; vram_put(CHR_BG_BLANK);
 ;
@@ -2407,20 +2455,20 @@ L11A8:	lda     _y
 ; for(y = 0x00; y != 0x1D; ++y) 
 ;
 	inc     _y
-	jmp     L11A8
+	jmp     L11B3
 ;
 ; for(x = 0x00; x != 0x20; ++x) 
 ;
-L11A9:	inc     _x
-	jmp     L11A7
+L11B4:	inc     _x
+	jmp     L11B2
 ;
 ; for(x = 0x00; x != BIRDS_COUNT; ++x) 
 ;
-L11AA:	lda     #$00
+L11B5:	lda     #$00
 	sta     _x
-L11AB:	lda     _x
+L11B6:	lda     _x
 	cmp     #$04
-	beq     L11AC
+	beq     L11B7
 ;
 ; bird_state[x] = 0;
 ;
@@ -2431,15 +2479,15 @@ L11AB:	lda     _x
 ; for(x = 0x00; x != BIRDS_COUNT; ++x) 
 ;
 	inc     _x
-	jmp     L11AB
+	jmp     L11B6
 ;
 ; for (x = 0x00; x < RAIN_COUNT; ++x) {
 ;
-L11AC:	lda     #$00
+L11B7:	lda     #$00
 	sta     _x
-L11AD:	lda     _x
+L11B8:	lda     _x
 	cmp     #$08
-	bcs     L089F
+	bcs     L08B2
 ;
 ; rain_drop_x[x] = rand8();
 ;
@@ -2447,9 +2495,9 @@ L11AD:	lda     _x
 	ldx     #>(_rain_drop_x)
 	clc
 	adc     _x
-	bcc     L08A8
+	bcc     L08BB
 	inx
-L08A8:	jsr     pushax
+L08BB:	jsr     pushax
 	jsr     _rand8
 	ldy     #$00
 	jsr     staspidx
@@ -2460,9 +2508,9 @@ L08A8:	jsr     pushax
 	ldx     #>(_rain_drop_y)
 	clc
 	adc     _x
-	bcc     L08AC
+	bcc     L08BF
 	inx
-L08AC:	jsr     pushax
+L08BF:	jsr     pushax
 	jsr     _rand8
 	ldy     #$00
 	jsr     staspidx
@@ -2470,15 +2518,15 @@ L08AC:	jsr     pushax
 ; for (x = 0x00; x < RAIN_COUNT; ++x) {
 ;
 	inc     _x
-	jmp     L11AD
+	jmp     L11B8
 ;
 ; put_str(NTADR_A(0x0D, 0x09), "SCORE");
 ;
-L089F:	ldx     #$21
+L08B2:	ldx     #$21
 	lda     #$2D
 	jsr     pushax
-	lda     #<(L08B5)
-	ldx     #>(L08B5)
+	lda     #<(L08C8)
+	ldx     #>(L08C8)
 	jsr     _put_str
 ;
 ; put_number(NTADR_A(0x12, 0x09), score, 2);
@@ -2504,8 +2552,8 @@ L089F:	ldx     #$21
 	ldx     #$21
 	lda     #$6D
 	jsr     pushax
-	lda     #<(L08C7)
-	ldx     #>(L08C7)
+	lda     #<(L08DA)
+	ldx     #>(L08DA)
 	jsr     _put_str
 ;
 ; vram_adr(NTADR_A(0x13, 0x0B));
@@ -2518,7 +2566,7 @@ L089F:	ldx     #$21
 ;
 	lda     _game
 	cmp     #$0A
-	bcc     L11AE
+	bcc     L11B9
 ;
 ; vram_put(CHR_ZERO + game.level / 10);
 ;
@@ -2539,12 +2587,12 @@ L089F:	ldx     #$21
 ;
 ; } else {
 ;
-	jmp     L11B2
+	jmp     L11BD
 ;
 ; vram_put(CHR_ZERO + game.level);
 ;
-L11AE:	lda     _game
-L11B2:	clc
+L11B9:	lda     _game
+L11BD:	clc
 	adc     #$30
 	jsr     _vram_put
 ;
@@ -2605,7 +2653,7 @@ L11B2:	clc
 ;
 	lda     _game_calc_state
 	cmp     #$01
-	jne     L11B8
+	jne     L11C3
 ;
 ; game_calc_state = GCS_NORMAL;
 ;
@@ -2620,9 +2668,9 @@ L11B2:	clc
 ; for(x = 0x00; x != 0x20; ++x) total_height += grass.height[x];
 ;
 	sta     _x
-L11B5:	lda     _x
+L11C0:	lda     _x
 	cmp     #$20
-	beq     L0A84
+	beq     L0A97
 	ldy     _x
 	lda     _grass+4,y
 	clc
@@ -2632,15 +2680,15 @@ L11B5:	lda     _x
 	adc     _adr+1
 	sta     _adr+1
 	inc     _x
-	jmp     L11B5
+	jmp     L11C0
 ;
 ; if (total_height > GRASS_SBLOCK * 6) {
 ;
-L0A84:	lda     _adr
+L0A97:	lda     _adr
 	cmp     #$D3
 	lda     _adr+1
 	sbc     #$00
-	bcc     L0A8F
+	bcc     L0AA2
 ;
 ; one_vram_buffer(0xA6, NTADR_A(0x1D, Y_EDGE));
 ;
@@ -2670,7 +2718,7 @@ L0A84:	lda     _adr
 	cmp     #$19
 	lda     _adr+1
 	sbc     #$01
-	bcc     L0AC3
+	bcc     L0AD6
 ;
 ; sfx_play(SND_GAME_LOSE, 0);
 ;
@@ -2699,11 +2747,11 @@ L0A84:	lda     _adr
 ;
 ; if (total_height > GRASS_SBLOCK * 4) {
 ;
-L0A8F:	lda     _adr
+L0AA2:	lda     _adr
 	cmp     #$8D
 	lda     _adr+1
 	sbc     #$00
-	bcc     L0AAD
+	bcc     L0AC0
 ;
 ; one_vram_buffer(0xA3, NTADR_A(0x1D, Y_EDGE));
 ;
@@ -2719,18 +2767,18 @@ L0A8F:	lda     _adr
 	cmp     #$B0
 	lda     _adr+1
 	sbc     #$00
-	bcc     L11B6
+	bcc     L11C1
 	lda     #$A0
-	jmp     L11B7
-L11B6:	lda     #$7F
-L11B7:	jsr     pusha
+	jmp     L11C2
+L11C1:	lda     #$7F
+L11C2:	jsr     pusha
 	ldx     #$23
 	lda     #$9E
 	jmp     _one_vram_buffer
 ;
 ; one_vram_buffer(0x9F + total_height / GRASS_SBLOCK, NTADR_A(0x1D, Y_EDGE));
 ;
-L0AAD:	lda     _adr
+L0AC0:	lda     _adr
 	ldx     _adr+1
 	jsr     pushax
 	lda     #$23
@@ -2752,15 +2800,15 @@ L0AAD:	lda     _adr
 ;
 ; } else {
 ;
-L0AC3:	rts
+L0AD6:	rts
 ;
 ; --grass.delay;
 ;
-L11B8:	dec     _grass
+L11C3:	dec     _grass
 ;
 ; if (grass.delay == 0x00) {
 ;
-	beq     L11BE
+	beq     L11C9
 ;
 ; }
 ;
@@ -2768,7 +2816,7 @@ L11B8:	dec     _grass
 ;
 ; game_calc_state = GCS_CHECK;
 ;
-L11BE:	lda     #$01
+L11C9:	lda     #$01
 	sta     _game_calc_state
 ;
 ; grass.delay = grass.delay_max;
@@ -2783,7 +2831,7 @@ L11BE:	lda     #$01
 ;
 ; x = (rand8() >> 3);
 ;
-L0AE0:	jsr     _rand8
+L0AF3:	jsr     _rand8
 	jsr     asrax3
 	sta     _x
 ;
@@ -2796,7 +2844,7 @@ L0AE0:	jsr     _rand8
 ; if (single_sprout != 12) {
 ;
 	cmp     #$0C
-	jeq     L11BD
+	jeq     L11C8
 ;
 ; ++single_sprout;
 ;
@@ -2806,7 +2854,7 @@ L0AE0:	jsr     _rand8
 ;
 	lda     _tmp
 	cmp     #$05
-	bne     L11B9
+	bne     L11C4
 	jsr     pusha
 	lda     _x
 	ora     #$E0
@@ -2815,9 +2863,9 @@ L0AE0:	jsr     _rand8
 ;
 ; if (single_sprout == 9) one_vram_buffer(5, NTADR_A(x, GRASS_BORDER - 1));
 ;
-L11B9:	lda     _tmp
+L11C4:	lda     _tmp
 	cmp     #$09
-	bne     L11BA
+	bne     L11C5
 	lda     #$05
 	jsr     pusha
 	lda     _x
@@ -2827,23 +2875,23 @@ L11B9:	lda     _tmp
 ;
 ; if (single_sprout > 8) index = 2; 
 ;
-L11BA:	lda     _tmp
+L11C5:	lda     _tmp
 	cmp     #$09
-	bcc     L11BB
+	bcc     L11C6
 	lda     #$02
 ;
 ; else if (single_sprout > 4) index = 1; 
 ;
-	jmp     L11B4
-L11BB:	lda     _tmp
+	jmp     L11BF
+L11C6:	lda     _tmp
 	cmp     #$05
 	lda     #$00
-	bcc     L11B4
+	bcc     L11BF
 	lda     #$01
 ;
 ; else index = 0;
 ;
-L11B4:	sta     _index
+L11BF:	sta     _index
 ;
 ; grass.height[x] = single_sprout;
 ;
@@ -2879,18 +2927,18 @@ L11B4:	sta     _index
 ;
 ; if (y == grass.instant_count) break;
 ;
-L11BD:	lda     _grass+2
+L11C8:	lda     _grass+2
 	cmp     _y
-	beq     L0ADE
+	beq     L0AF1
 ;
 ; for (y = 0x00; ; ++y) {
 ;
 	inc     _y
-	jmp     L0AE0
+	jmp     L0AF3
 ;
 ; }
 ;
-L0ADE:	rts
+L0AF1:	rts
 
 .endproc
 
@@ -2909,21 +2957,21 @@ L0ADE:	rts
 ;
 	lda     _tmp
 	cmp     #$09
-	bcc     L11C0
+	bcc     L11CB
 	lda     #$02
 ;
 ; else if (single_sprout > 4) index = 1; 
 ;
-	jmp     L11BF
-L11C0:	lda     _tmp
+	jmp     L11CA
+L11CB:	lda     _tmp
 	cmp     #$05
 	lda     #$00
-	bcc     L11BF
+	bcc     L11CA
 	lda     #$01
 ;
 ; else index = 0;
 ;
-L11BF:	sta     _index
+L11CA:	sta     _index
 ;
 ; }
 ;
@@ -2946,13 +2994,13 @@ L11BF:	sta     _index
 ;
 	lda     _index
 	cmp     #$02
-	bne     L11C3
+	bne     L11CE
 ;
 ; if (single_sprout < 9) one_vram_buffer(0, NTADR_A(x, GRASS_BORDER - 2));
 ;
 	lda     _tmp
 	cmp     #$09
-	bcs     L11C3
+	bcs     L11CE
 	lda     #$00
 	jsr     pusha
 	lda     _x
@@ -2962,17 +3010,17 @@ L11BF:	sta     _index
 ;
 ; if (index == 1 || index == 2) {
 ;
-L11C3:	lda     _index
+L11CE:	lda     _index
 	cmp     #$01
-	beq     L11C6
+	beq     L11D1
 	cmp     #$02
-	bne     L11C7
+	bne     L11D2
 ;
 ; if (single_sprout < 5) one_vram_buffer(0, NTADR_A(x, GRASS_BORDER - 1));
 ;
-L11C6:	lda     _tmp
+L11D1:	lda     _tmp
 	cmp     #$05
-	bcs     L11C7
+	bcs     L11D2
 	lda     #$00
 	jsr     pusha
 	lda     _x
@@ -2982,23 +3030,23 @@ L11C6:	lda     _tmp
 ;
 ; if (single_sprout > 8) index = 2; 
 ;
-L11C7:	lda     _tmp
+L11D2:	lda     _tmp
 	cmp     #$09
-	bcc     L11C8
+	bcc     L11D3
 	lda     #$02
 ;
 ; else if (single_sprout > 4) index = 1; 
 ;
-	jmp     L11C2
-L11C8:	lda     _tmp
+	jmp     L11CD
+L11D3:	lda     _tmp
 	cmp     #$05
 	lda     #$00
-	bcc     L11C2
+	bcc     L11CD
 	lda     #$01
 ;
 ; else index = 0;
 ;
-L11C2:	sta     _index
+L11CD:	sta     _index
 ;
 ; one_vram_buffer(single_sprout - index * 4, NTADR_A(x, GRASS_BORDER - index));  
 ;
@@ -3064,7 +3112,7 @@ L11C2:	sta     _index
 ; if (single_sprout > 2) {
 ;
 	cmp     #$03
-	bcc     L0B8D
+	bcc     L0BA0
 ;
 ; game_grass_cf_prepare();
 ;
@@ -3080,23 +3128,23 @@ L11C2:	sta     _index
 ;
 ; ++adr;
 ;
-L0B8D:	inc     _adr
-	bne     L0B93
+L0BA0:	inc     _adr
+	bne     L0BA6
 	inc     _adr+1
 ;
 ; if (adr == GAME_WIN_TIME) game.state = GAME_ST_LEVEL_END_WIN;
 ;
-L0B93:	lda     _adr+1
-	bne     L0B94
+L0BA6:	lda     _adr+1
+	bne     L0BA7
 	lda     _adr
 	cmp     #$80
-	bne     L0B94
+	bne     L0BA7
 	lda     #$03
 	sta     _game+3
 ;
 ; }
 ;
-L0B94:	rts
+L0BA7:	rts
 
 .endproc
 
@@ -3117,7 +3165,7 @@ L0B94:	rts
 ;
 ; if (grass.delay == 0x00) {
 ;
-	beq     L11D1
+	beq     L11DC
 ;
 ; }
 ;
@@ -3125,7 +3173,7 @@ L0B94:	rts
 ;
 ; game_calc_state = GCS_CHECK;
 ;
-L11D1:	lda     #$01
+L11DC:	lda     #$01
 	sta     _game_calc_state
 ;
 ; grass.delay = 0x14;
@@ -3152,19 +3200,19 @@ L11D1:	lda     #$01
 	lda     _state
 	sta     _x
 	ldx     #$00
-L11CC:	lda     _state
+L11D7:	lda     _state
 	clc
 	adc     #$06
-	bcc     L0BAD
+	bcc     L0BC0
 	inx
-L0BAD:	cpx     #$00
-	bne     L11D0
+L0BC0:	cpx     #$00
+	bne     L11DB
 	cmp     _x
-	jeq     L0BA7
+	jeq     L0BBA
 ;
 ; single_sprout = grass.height[x];
 ;
-L11D0:	ldy     _x
+L11DB:	ldy     _x
 	lda     _grass+4,y
 	sta     _tmp
 ;
@@ -3172,9 +3220,9 @@ L11D0:	ldy     _x
 ;
 	lda     #$01
 	sta     _y
-L11CD:	lda     _y
+L11D8:	lda     _y
 	cmp     #$07
-	beq     L11CE
+	beq     L11D9
 ;
 ; if (single_sprout <= y * 4) {
 ;
@@ -3183,12 +3231,12 @@ L11CD:	lda     _y
 	lda     _y
 	jsr     shlax2
 	jsr     tosicmp
-	beq     L11CB
-	bcs     L0BB5
+	beq     L11D6
+	bcs     L0BC8
 ;
 ; one_vram_buffer(0xA3, NTADR_A(x, GRASS_BORDER - y + 1));
 ;
-L11CB:	lda     #$A3
+L11D6:	lda     #$A3
 	jsr     pusha
 	lda     #$17
 	sec
@@ -3196,9 +3244,9 @@ L11CB:	lda     #$A3
 	ldx     #$00
 	clc
 	adc     #$01
-	bcc     L0BC4
+	bcc     L0BD7
 	inx
-L0BC4:	jsr     shlax4
+L0BD7:	jsr     shlax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -3236,16 +3284,16 @@ L0BC4:	jsr     shlax4
 ;
 ; break;
 ;
-	jmp     L11CE
+	jmp     L11D9
 ;
 ; for (y = 0x01; y != 0x07; ++y) {
 ;
-L0BB5:	inc     _y
-	jmp     L11CD
+L0BC8:	inc     _y
+	jmp     L11D8
 ;
 ; single_sprout += 4;
 ;
-L11CE:	lda     #$04
+L11D9:	lda     #$04
 	clc
 	adc     _tmp
 	sta     _tmp
@@ -3261,25 +3309,25 @@ L11CE:	lda     #$04
 	ldx     #$00
 	lda     _y
 	cmp     #$07
-	bne     L11CF
+	bne     L11DA
 	inc     _index
 ;
 ; for (x = state; x != state + 6; ++x) {
 ;
-L11CF:	inc     _x
-	jmp     L11CC
+L11DA:	inc     _x
+	jmp     L11D7
 ;
-; if (index == 6) game.state = GAME_ST_LEVEL_END_LOSE;
+; if (index == 0x06) game.state = GAME_ST_LEVEL_END_LOSE;
 ;
-L0BA7:	lda     _index
+L0BBA:	lda     _index
 	cmp     #$06
-	bne     L0BD7
+	bne     L0BEA
 	lda     #$05
 	sta     _game+3
 ;
 ; }
 ;
-L0BD7:	rts
+L0BEA:	rts
 
 .endproc
 
@@ -3317,9 +3365,9 @@ L0BD7:	rts
 ; if (game.effects.lightning == 0 && game.effects.wind == 0) sfx_play(SND_GAME_CUT, 1);
 ;
 	lda     _game+8
-	bne     L11DD
+	bne     L11E8
 	lda     _game+10
-	bne     L11DD
+	bne     L11E8
 	lda     #$04
 	jsr     pusha
 	lda     #$01
@@ -3327,16 +3375,16 @@ L0BD7:	rts
 ;
 ; for (y = 0; y != player.cut.size; ++y) {
 ;
-L11DD:	lda     #$00
+L11E8:	lda     #$00
 	sta     _y
-L11D8:	lda     _player+10
+L11E3:	lda     _player+10
 	cmp     _y
-	jeq     L11DC
+	jeq     L11E7
 ;
 ; if (state == 0) {
 ;
 	lda     _state
-	bne     L11DA
+	bne     L11E5
 ;
 ; x += y;
 ;
@@ -3354,7 +3402,7 @@ L11D8:	lda     _player+10
 ;
 	lda     _player+18
 	cmp     #$05
-	bcs     L0B46
+	bcs     L0B59
 ;
 ; if (corr_power > (player.abilities.list[ABILITY_CUT_POWER] < ABILITY_EX_LEVEL ? 1 : 2)) --corr_power;
 ;
@@ -3362,22 +3410,22 @@ L11D8:	lda     _player+10
 	jsr     pusha0
 	lda     _player+18
 	cmp     #$03
-	bcs     L11D9
+	bcs     L11E4
 	lda     #$01
-	jmp     L0B43
-L11D9:	lda     #$02
-L0B43:	jsr     tosicmp0
-	bcc     L0B46
-	beq     L0B46
+	jmp     L0B56
+L11E4:	lda     #$02
+L0B56:	jsr     tosicmp0
+	bcc     L0B59
+	beq     L0B59
 	dec     _marker
 ;
 ; } else {
 ;
-	jmp     L0B46
+	jmp     L0B59
 ;
 ; x -= y;
 ;
-L11DA:	lda     _y
+L11E5:	lda     _y
 	eor     #$FF
 	sec
 	adc     _x
@@ -3390,7 +3438,7 @@ L11DA:	lda     _y
 ;
 ; single_sprout = grass.height[x];
 ;
-L0B46:	ldy     _x
+L0B59:	ldy     _x
 	lda     _grass+4,y
 	sta     _tmp
 ;
@@ -3403,7 +3451,7 @@ L0B46:	ldy     _x
 	ldx     #$00
 	lda     _marker
 	cmp     _tmp
-	bcc     L11DB
+	bcc     L11E6
 ;
 ; single_sprout = 1;
 ;
@@ -3430,11 +3478,11 @@ L0B46:	ldy     _x
 ;
 ; } else {
 ;
-	jmp     L11DF
+	jmp     L11EA
 ;
 ; single_sprout -= corr_power;
 ;
-L11DB:	lda     _marker
+L11E6:	lda     _marker
 	eor     #$FF
 	sec
 	adc     _tmp
@@ -3453,7 +3501,7 @@ L11DB:	lda     _marker
 ; player.cut.count += corr_power;
 ;
 	lda     _marker
-L11DF:	clc
+L11EA:	clc
 	adc     _player+15
 	sta     _player+15
 ;
@@ -3468,12 +3516,12 @@ L11DF:	clc
 ; for (y = 0; y != player.cut.size; ++y) {
 ;
 	inc     _y
-	jmp     L11D8
+	jmp     L11E3
 ;
 ; if (player.specials.active[SP_SLASH] != 0) {
 ;
-L11DC:	lda     _player+26
-	beq     L0B68
+L11E7:	lda     _player+26
+	beq     L0B7B
 ;
 ; --player.specials.active[SP_SLASH];
 ;
@@ -3481,7 +3529,7 @@ L11DC:	lda     _player+26
 ;
 ; if (player.specials.active[SP_SLASH] == 0) {
 ;
-	bne     L0B68
+	bne     L0B7B
 ;
 ; player.cut.max_delay = player.cut.temp_store;
 ;
@@ -3490,7 +3538,7 @@ L11DC:	lda     _player+26
 ;
 ; } 
 ;
-L0B68:	rts
+L0B7B:	rts
 
 .endproc
 
@@ -3509,19 +3557,19 @@ L0B68:	rts
 ;
 	lda     _points
 	cmp     #$63
-	bcs     L11E2
+	bcs     L11ED
 	lda     _player+15
 	sec
 	sbc     _grass+3
 	sta     tmp1
 	lda     tmp1
-	beq     L11E2
-	bcs     L11E3
-L11E2:	rts
+	beq     L11ED
+	bcs     L11EE
+L11ED:	rts
 ;
 ; player.cut.count = 0;
 ;
-L11E3:	lda     #$00
+L11EE:	lda     #$00
 	sta     _player+15
 ;
 ; switch (game.difficulty) {
@@ -3530,33 +3578,33 @@ L11E3:	lda     #$00
 ;
 ; }
 ;
-	beq     L11E4
+	beq     L11EF
 	cmp     #$01
-	beq     L11E5
+	beq     L11F0
 	cmp     #$02
-	beq     L11E6
-	jmp     L11E7
+	beq     L11F1
+	jmp     L11F2
 ;
 ; case GAME_DF_EASY :   grass.col_for_point += 1; break;
 ;
-L11E4:	inc     _grass+3
-	jmp     L11E7
+L11EF:	inc     _grass+3
+	jmp     L11F2
 ;
 ; case GAME_DF_MEDIUM : grass.col_for_point += 3; break;
 ;
-L11E5:	lda     #$03
-	jmp     L11E9
+L11F0:	lda     #$03
+	jmp     L11F4
 ;
 ; case GAME_DF_HARD :   grass.col_for_point += 5; break;
 ;
-L11E6:	lda     #$05
-L11E9:	clc
+L11F1:	lda     #$05
+L11F4:	clc
 	adc     _grass+3
 	sta     _grass+3
 ;
 ; ++points;
 ;
-L11E7:	inc     _points
+L11F2:	inc     _points
 ;
 ; game_draw_points();
 ;
@@ -3581,7 +3629,7 @@ L11E7:	inc     _points
 ;
 ; if (rain_delay == 0) {
 ;
-	bne     L11ED
+	bne     L11F8
 ;
 ; rain_delay = DEFAULT_RAIN_DELAY;
 ;
@@ -3592,9 +3640,9 @@ L11E7:	inc     _points
 ;
 	lda     #$00
 	sta     _index
-L11EB:	lda     _index
+L11F6:	lda     _index
 	cmp     #$08
-	beq     L11ED
+	beq     L11F8
 ;
 ; rain_drop_x[index] += rain_drop_y[index];
 ;
@@ -3602,9 +3650,9 @@ L11EB:	lda     _index
 	ldx     #>(_rain_drop_x)
 	clc
 	adc     _index
-	bcc     L0A1C
+	bcc     L0A2F
 	inx
-L0A1C:	jsr     pushax
+L0A2F:	jsr     pushax
 	sta     ptr1
 	stx     ptr1+1
 	ldy     #$00
@@ -3623,9 +3671,9 @@ L0A1C:	jsr     pushax
 	ldx     #>(_rain_drop_y)
 	clc
 	adc     _index
-	bcc     L0A22
+	bcc     L0A35
 	inx
-L0A22:	sta     ptr1
+L0A35:	sta     ptr1
 	stx     ptr1+1
 	ldy     #$00
 	lda     (ptr1),y
@@ -3638,23 +3686,23 @@ L0A22:	sta     ptr1
 	ldy     _index
 	lda     _rain_drop_y,y
 	cmp     #$C9
-	bcc     L11EC
+	bcc     L11F7
 	ldy     _index
 	lda     #$0A
 	sta     _rain_drop_y,y
 ;
 ; for (index = 0x00; index != RAIN_COUNT; ++index) {
 ;
-L11EC:	inc     _index
-	jmp     L11EB
+L11F7:	inc     _index
+	jmp     L11F6
 ;
 ; for (index = 0x00; index != RAIN_COUNT; ++index) {
 ;
-L11ED:	lda     #$00
+L11F8:	lda     #$00
 	sta     _index
-L11EE:	lda     _index
+L11F9:	lda     _index
 	cmp     #$08
-	beq     L0A2D
+	beq     L0A40
 ;
 ; oam_spr(rain_drop_x[index], rain_drop_y[index], 0x04, 0b00000010);
 ;
@@ -3676,11 +3724,11 @@ L11EE:	lda     _index
 ; for (index = 0x00; index != RAIN_COUNT; ++index) {
 ;
 	inc     _index
-	jmp     L11EE
+	jmp     L11F9
 ;
 ; }
 ;
-L0A2D:	rts
+L0A40:	rts
 
 .endproc
 
@@ -3702,14 +3750,14 @@ L0A2D:	rts
 ; if (player.cut.state == 0 || player.cut.state == CUT_ST_RECOVER) {
 ;
 	lda     _player+11
-	beq     L11F0
+	beq     L11FB
 	cmp     #$05
-	bne     L11F1
+	bne     L11FC
 ;
 ; if (player.direction == DIR_LEFT) oam_meta_spr(player.x, player.y, OTM_L);
 ;
-L11F0:	lda     _player+8
-	bne     L09A3
+L11FB:	lda     _player+8
+	bne     L09B6
 	jsr     decsp2
 	lda     _player
 	ldy     #$01
@@ -3722,8 +3770,8 @@ L11F0:	lda     _player+8
 ;
 ; else oam_meta_spr(player.x, player.y, OTM_R);
 ;
-	jmp     L11EF
-L09A3:	jsr     decsp2
+	jmp     L11FA
+L09B6:	jsr     decsp2
 	lda     _player
 	ldy     #$01
 	sta     (sp),y
@@ -3735,15 +3783,15 @@ L09A3:	jsr     decsp2
 ;
 ; } else {
 ;
-	jmp     L11EF
+	jmp     L11FA
 ;
 ; --player.cut.delay;
 ;
-L11F1:	dec     _player+12
+L11FC:	dec     _player+12
 ;
 ; if (player.cut.delay == 0) {
 ;
-	bne     L11F3
+	bne     L11FE
 ;
 ; player.cut.delay = player.cut.max_delay;
 ;
@@ -3754,7 +3802,7 @@ L11F1:	dec     _player+12
 ;
 	lda     _player+11
 	cmp     #$03
-	bne     L11F2
+	bne     L11FD
 ;
 ; player.cut.state = CUT_ST_RECOVER;
 ;
@@ -3767,20 +3815,20 @@ L11F1:	dec     _player+12
 ;
 ; } else {
 ;
-	jmp     L11F3
+	jmp     L11FE
 ;
 ; ++player.cut.state;
 ;
-L11F2:	inc     _player+11
+L11FD:	inc     _player+11
 ;
 ; if (player.cut.state == CUT_ST_C1 || player.cut.state == CUT_ST_RECOVER) oam_meta_spr(player.x - 8, player.y, OTM_RC_1);
 ;
-L11F3:	lda     _player+11
+L11FE:	lda     _player+11
 	cmp     #$01
-	beq     L11F5
+	beq     L1200
 	cmp     #$05
-	bne     L11F6
-L11F5:	jsr     decsp2
+	bne     L1201
+L1200:	jsr     decsp2
 	lda     _player
 	sec
 	sbc     #$08
@@ -3795,9 +3843,9 @@ L11F5:	jsr     decsp2
 ;
 ; if (player.cut.state == CUT_ST_C2) oam_meta_spr(player.x, player.y, OTM_RC_2);
 ;
-L11F6:	lda     _player+11
+L1201:	lda     _player+11
 	cmp     #$02
-	bne     L11F7
+	bne     L1202
 	jsr     decsp2
 	lda     _player
 	ldy     #$01
@@ -3811,9 +3859,9 @@ L11F6:	lda     _player+11
 ;
 ; if (player.cut.state == CUT_ST_C3) oam_meta_spr(player.x + 8, player.y, OTM_RC_3);
 ;
-L11F7:	lda     _player+11
+L1202:	lda     _player+11
 	cmp     #$03
-	bne     L11F8
+	bne     L1203
 	jsr     decsp2
 	lda     _player
 	clc
@@ -3825,12 +3873,12 @@ L11F7:	lda     _player+11
 	sta     (sp),y
 	lda     #<(_OTM_RC_3)
 	ldx     #>(_OTM_RC_3)
-L11EF:	jsr     _oam_meta_spr
+L11FA:	jsr     _oam_meta_spr
 ;
 ; if (small_scythe.state != 0) {
 ;
-L11F8:	lda     _small_scythe+5
-	beq     L09D0
+L1203:	lda     _small_scythe+5
+	beq     L09E3
 ;
 ; oam_meta_spr(small_scythe.x, small_scythe.y, SCYTHE_STATE[small_scythe.sprite]);
 ;
@@ -3856,7 +3904,7 @@ L11F8:	lda     _small_scythe+5
 ;
 ; }
 ;
-L09D0:	rts
+L09E3:	rts
 
 .endproc
 
@@ -3903,9 +3951,9 @@ L09D0:	rts
 ;
 	lda     #$00
 	sta     _x
-L11F9:	lda     _x
+L1204:	lda     _x
 	cmp     #$20
-	beq     L11FA
+	beq     L1205
 ;
 ; vram_adr(NAMETABLE_A + rand8() * 3 - SCREEN_TILES_X * 5);
 ;
@@ -3919,9 +3967,9 @@ L11F9:	lda     _x
 	pla
 	sec
 	sbc     #$A0
-	bcs     L0902
+	bcs     L0915
 	dex
-L0902:	jsr     _vram_adr
+L0915:	jsr     _vram_adr
 ;
 ; vram_put(0x2B);
 ;
@@ -3940,9 +3988,9 @@ L0902:	jsr     _vram_adr
 	pla
 	sec
 	sbc     #$A0
-	bcs     L0907
+	bcs     L091A
 	dex
-L0907:	jsr     _vram_adr
+L091A:	jsr     _vram_adr
 ;
 ; vram_put(0x2D);
 ;
@@ -3952,20 +4000,20 @@ L0907:	jsr     _vram_adr
 ; for(x = 0x00; x != STARS_COUNT; ++x) {
 ;
 	inc     _x
-	jmp     L11F9
+	jmp     L1204
 ;
 ; index = 0x10;
 ;
-L11FA:	lda     #$10
+L1205:	lda     #$10
 	sta     _index
 ;
 ; for(y = MOON_Y; y != MOON_Y + 0x04; ++y) {
 ;
 	lda     #$03
 	sta     _y
-L11FB:	lda     _y
+L1206:	lda     _y
 	cmp     #$07
-	beq     L090D
+	beq     L0920
 ;
 ; vram_adr(NAMETABLE_A + y * SCREEN_TILES_X + MOON_X);
 ;
@@ -3983,17 +4031,17 @@ L11FB:	lda     _y
 	pla
 	clc
 	adc     #$18
-	bcc     L0916
+	bcc     L0929
 	inx
-L0916:	jsr     _vram_adr
+L0929:	jsr     _vram_adr
 ;
 ; for(x = 0x00; x != 0x04; ++x) {
 ;
 	lda     #$00
 	sta     _x
-L11FC:	lda     _x
+L1207:	lda     _x
 	cmp     #$04
-	beq     L11FD
+	beq     L1208
 ;
 ; vram_put(index);
 ;
@@ -4007,16 +4055,16 @@ L11FC:	lda     _x
 ; for(x = 0x00; x != 0x04; ++x) {
 ;
 	inc     _x
-	jmp     L11FC
+	jmp     L1207
 ;
 ; for(y = MOON_Y; y != MOON_Y + 0x04; ++y) {
 ;
-L11FD:	inc     _y
-	jmp     L11FB
+L1208:	inc     _y
+	jmp     L1206
 ;
 ; vram_adr(NAMETABLE_A + 0x20 * GRASS_BORDER);
 ;
-L090D:	ldx     #$22
+L0920:	ldx     #$22
 	lda     #$E0
 	jsr     _vram_adr
 ;
@@ -4024,9 +4072,9 @@ L090D:	ldx     #$22
 ;
 	lda     #$00
 	sta     _x
-L11FE:	lda     _x
+L1209:	lda     _x
 	cmp     #$20
-	beq     L11FF
+	beq     L120A
 ;
 ; grass.height[x] = rand8() % 0x03 + 1;
 ;
@@ -4034,9 +4082,9 @@ L11FE:	lda     _x
 	ldx     #>(_grass+4)
 	clc
 	adc     _x
-	bcc     L092E
+	bcc     L0941
 	inx
-L092E:	jsr     pushax
+L0941:	jsr     pushax
 	jsr     _rand8
 	jsr     pushax
 	lda     #$03
@@ -4055,55 +4103,55 @@ L092E:	jsr     pushax
 ; for(x = 0x00; x != GRASS_WIDTH; ++x) {
 ;
 	inc     _x
-	jmp     L11FE
+	jmp     L1209
 ;
 ; for(x = 0x00; x != GRASS_WIDTH; ++x) vram_put(0x06 + (rand8() % 4));
 ;
-L11FF:	lda     #$00
+L120A:	lda     #$00
 	sta     _x
-L1200:	lda     _x
+L120B:	lda     _x
 	cmp     #$20
-	beq     L1201
+	beq     L120C
 	jsr     _rand8
 	and     #$03
 	clc
 	adc     #$06
 	jsr     _vram_put
 	inc     _x
-	jmp     L1200
+	jmp     L120B
 ;
 ; for(x = 0x00; x != GRASS_WIDTH * 2; ++x) vram_put(0x0A + (rand8() % 4));
 ;
-L1201:	lda     #$00
+L120C:	lda     #$00
 	sta     _x
-L1202:	lda     _x
+L120D:	lda     _x
 	cmp     #$40
-	beq     L1203
+	beq     L120E
 	jsr     _rand8
 	and     #$03
 	clc
 	adc     #$0A
 	jsr     _vram_put
 	inc     _x
-	jmp     L1202
+	jmp     L120D
 ;
 ; for(x = 0x00; x != GRASS_WIDTH; ++x) {
 ;
-L1203:	lda     #$00
+L120E:	lda     #$00
 	sta     _x
-L1204:	lda     _x
+L120F:	lda     _x
 	cmp     #$20
-	beq     L094E
+	beq     L0961
 ;
 ; state = state == 0x0E ? 0x0F : 0x0E;
 ;
 	lda     _state
 	cmp     #$0E
-	bne     L1205
+	bne     L1210
 	lda     #$0F
-	jmp     L1206
-L1205:	lda     #$0E
-L1206:	sta     _state
+	jmp     L1211
+L1210:	lda     #$0E
+L1211:	sta     _state
 ;
 ; vram_put(state);
 ;
@@ -4112,11 +4160,11 @@ L1206:	sta     _state
 ; for(x = 0x00; x != GRASS_WIDTH; ++x) {
 ;
 	inc     _x
-	jmp     L1204
+	jmp     L120F
 ;
 ; vram_adr(NAMETABLE_A + SCREEN_TILES_X * 0x1C);
 ;
-L094E:	ldx     #$23
+L0961:	ldx     #$23
 	lda     #$80
 	jsr     _vram_adr
 ;
@@ -4124,29 +4172,29 @@ L094E:	ldx     #$23
 ;
 	lda     #$00
 	sta     _x
-L1207:	lda     _x
+L1212:	lda     _x
 	cmp     #$20
-	beq     L0960
+	beq     L0973
 ;
 ; vram_put(STATUS_BAR[x] == 0 ? CHR_BG_BLANK : STATUS_BAR[x]);
 ;
 	ldy     _x
 	lda     _STATUS_BAR,y
-	bne     L096B
+	bne     L097E
 	lda     #$7F
-	jmp     L1208
-L096B:	ldy     _x
+	jmp     L1213
+L097E:	ldy     _x
 	lda     _STATUS_BAR,y
-L1208:	jsr     _vram_put
+L1213:	jsr     _vram_put
 ;
 ; for (x = 0x00; x != 0x20; ++x) 
 ;
 	inc     _x
-	jmp     L1207
+	jmp     L1212
 ;
 ; vram_adr(NAMETABLE_A + SCREEN_TILES_X * 0x1C + 0x03);
 ;
-L0960:	ldx     #$23
+L0973:	ldx     #$23
 	lda     #$83
 	jsr     _vram_adr
 ;
@@ -4259,9 +4307,9 @@ L0960:	ldx     #$23
 ; if (game.effects.lightning != 0 && game.effects.lightning_enabled) {
 ;
 	lda     _game+8
-	beq     L120D
+	beq     L1218
 	lda     _game+9
-	beq     L120D
+	beq     L1218
 ;
 ; ++game.effects.lightning;
 ;
@@ -4274,83 +4322,83 @@ L0960:	ldx     #$23
 ; }
 ;
 	cmp     #$02
-	beq     L09E1
+	beq     L09F4
 	cmp     #$08
-	beq     L09E6
+	beq     L09F9
 	cmp     #$10
-	beq     L09EB
+	beq     L09FE
 	cmp     #$18
-	beq     L09F0
+	beq     L0A03
 	cmp     #$20
-	beq     L09F5
+	beq     L0A08
 	cmp     #$3C
-	beq     L120C
-	jmp     L120D
+	beq     L1217
+	jmp     L1218
 ;
 ; case 2: sfx_play(SND_GAME_LIGHTNING, 0);
 ;
-L09E1:	lda     #$09
+L09F4:	lda     #$09
 	jsr     pusha
 	lda     #$00
 	jsr     _sfx_play
 ;
 ; break;
 ;
-	jmp     L120D
+	jmp     L1218
 ;
 ; case 8: pal_col(0, 0x30);
 ;
-L09E6:	lda     #$00
+L09F9:	lda     #$00
 	jsr     pusha
 	lda     #$30
 	jsr     _pal_col
 ;
 ; break;
 ;
-	jmp     L120D
+	jmp     L1218
 ;
 ; case 16: pal_col(0, 0x0F);
 ;
-L09EB:	lda     #$00
+L09FE:	lda     #$00
 	jsr     pusha
 	lda     #$0F
 	jsr     _pal_col
 ;
 ; break;
 ;
-	jmp     L120D
+	jmp     L1218
 ;
 ; case 24: pal_col(0, 0x30);
 ;
-L09F0:	lda     #$00
+L0A03:	lda     #$00
 	jsr     pusha
 	lda     #$30
 	jsr     _pal_col
 ;
 ; break;
 ;
-	jmp     L120D
+	jmp     L1218
 ;
 ; case 32: pal_col(0, GAME_BG_COLOR);
 ;
-L09F5:	lda     #$00
+L0A08:	lda     #$00
 	jsr     pusha
 	lda     #$0C
 	jsr     _pal_col
 ;
 ; break;
 ;
-	jmp     L120D
+	jmp     L1218
 ;
 ; case 60: game.effects.lightning = 0;
 ;
-L120C:	lda     #$00
+L1217:	lda     #$00
 	sta     _game+8
 ;
 ; if (game.effects.wind != 0) {
 ;
-L120D:	lda     _game+10
-	beq     L0A02
+L1218:	lda     _game+10
+	beq     L0A15
 ;
 ; ++game.effects.wind;
 ;
@@ -4363,26 +4411,26 @@ L120D:	lda     _game+10
 ; }
 ;
 	cmp     #$02
-	beq     L0A04
+	beq     L0A17
 	cmp     #$5A
-	beq     L120E
+	beq     L1219
 	rts
 ;
 ; case 2 : sfx_play(SND_GAME_WIND, 0);
 ;
-L0A04:	lda     #$0A
+L0A17:	lda     #$0A
 	jsr     pusha
 	lda     #$00
 	jmp     _sfx_play
 ;
 ; case 90: game.effects.wind = 0;
 ;
-L120E:	lda     #$00
+L1219:	lda     #$00
 	sta     _game+10
 ;
 ; }
 ;
-L0A02:	rts
+L0A15:	rts
 
 .endproc
 
@@ -4400,34 +4448,34 @@ L0A02:	rts
 ; if (player.specials.active[SP_DASH] != 0) {
 ;
 	lda     _player+25
-	jeq     L1218
+	jeq     L1223
 ;
 ; if (ability_max) x = SP_DASH_SPEED_MAX;
 ;
 	lda     _player+22
 	cmp     #$05
-	bne     L1213
+	bne     L121E
 	lda     #$04
 ;
 ; else if (ability_ex) x = SP_DASH_SPEED_MED;
 ;
-	jmp     L1211
-L1213:	lda     _player+22
+	jmp     L121C
+L121E:	lda     _player+22
 	cmp     #$03
-	bcc     L1214
+	bcc     L121F
 	lda     #$03
 ;
 ; else x = SP_DASH_SPEED_LOW;
 ;
-	jmp     L1211
-L1214:	lda     #$02
-L1211:	sta     _x
+	jmp     L121C
+L121F:	lda     #$02
+L121C:	sta     _x
 ;
 ; if (player.specials.state[SP_DASH] == SP_DASH_LEFT) {
 ;
 	lda     _player+28
 	cmp     #$01
-	bne     L1215
+	bne     L1220
 ;
 ; if (player.x < x + 3) player.x = 3; else player.x -= x;
 ;
@@ -4436,24 +4484,24 @@ L1211:	sta     _x
 	lda     _x
 	clc
 	adc     #$03
-	bcc     L0BF2
+	bcc     L0C05
 	ldx     #$01
-L0BF2:	jsr     tosicmp
-	bcs     L0BF0
+L0C05:	jsr     tosicmp
+	bcs     L0C03
 	lda     #$03
-	jmp     L1212
-L0BF0:	lda     _x
+	jmp     L121D
+L0C03:	lda     _x
 	eor     #$FF
 	sec
 	adc     _player
 ;
 ; } else {
 ;
-	jmp     L1212
+	jmp     L121D
 ;
 ; player.x += x;
 ;
-L1215:	lda     _x
+L1220:	lda     _x
 	clc
 	adc     _player
 	sta     _player
@@ -4461,81 +4509,81 @@ L1215:	lda     _x
 ; if (player.x > RIGHT_EDGE - PLAYER_WIDTH) player.x = RIGHT_EDGE - PLAYER_WIDTH;
 ;
 	cmp     #$DB
-	bcc     L1216
+	bcc     L1221
 	lda     #$DA
-L1212:	sta     _player
+L121D:	sta     _player
 ;
 ; --player.specials.active[SP_DASH];
 ;
-L1216:	dec     _player+25
+L1221:	dec     _player+25
 ;
 ; player.y += player.specials.active[SP_DASH] > SP_DASH_JUMP ? -1 : 1;
 ;
 	lda     _player+25
 	cmp     #$06
-	bcc     L1217
+	bcc     L1222
 	lda     #$FF
-	jmp     L0C06
-L1217:	lda     #$01
-L0C06:	clc
+	jmp     L0C19
+L1222:	lda     #$01
+L0C19:	clc
 	adc     _player+1
 	sta     _player+1
 ;
 ; if (player.specials.active[SP_DASH] == 0) player.specials.state[SP_DASH] = SP_IDLE;
 ;
 	lda     _player+25
-	jne     L1226
+	jne     L1231
 	sta     _player+28
 ;
 ; } else {
 ;
-	jmp     L1226
+	jmp     L1231
 ;
 ; if (pad1 & PAD_LEFT || pad1 & PAD_RIGHT) {
 ;
-L1218:	lda     _pad1
+L1223:	lda     _pad1
 	and     #$02
-	bne     L1219
+	bne     L1224
 	lda     _pad1
 	and     #$01
-	jeq     L1226
+	jeq     L1231
 ;
 ; if ((ability_max && player.abilities.list[ABILITY_MOVE_SPEED] == ABILITY_MAX_LEVEL) || player.cut.state == CUT_ST_IDLE) {
 ;
-L1219:	lda     _player+22
+L1224:	lda     _player+22
 	cmp     #$05
-	bne     L121C
+	bne     L1227
 	lda     _player+20
 	cmp     #$05
-	beq     L121F
-L121C:	lda     _player+11
-	bne     L1226
+	beq     L122A
+L1227:	lda     _player+11
+	bne     L1231
 ;
 ; if (player.move_delay == 0) {
 ;
-L121F:	lda     _player+4
-	bne     L1225
+L122A:	lda     _player+4
+	bne     L1230
 ;
 ; if (player.move_max_delay != 0) player.move_delay = player.move_max_delay;
 ;
 	lda     _player+5
-	beq     L1220
+	beq     L122B
 	sta     _player+4
 ;
 ; x = 1;
 ;
-L1220:	lda     #$01
+L122B:	lda     #$01
 	sta     _x
 ;
 ; if (player.cut.state == CUT_ST_IDLE) {
 ;
 	lda     _player+11
-	bne     L1221
+	bne     L122C
 ;
 ; if (player.move_max_increase != 0) {
 ;
 	lda     _player+7
-	beq     L1221
+	beq     L122C
 ;
 ; --player.move_increase;
 ;
@@ -4543,7 +4591,7 @@ L1220:	lda     #$01
 ;
 ; if (player.move_increase == 0) {
 ;
-	bne     L1221
+	bne     L122C
 ;
 ; player.move_increase = player.move_max_increase;
 ;
@@ -4556,9 +4604,9 @@ L1220:	lda     #$01
 ;
 ; if (pad1 & PAD_LEFT) {
 ;
-L1221:	lda     _pad1
+L122C:	lda     _pad1
 	and     #$02
-	beq     L1223
+	beq     L122E
 ;
 ; player.x = (player.x - 3) < x ? 3 : player.x - x;
 ;
@@ -4566,18 +4614,18 @@ L1221:	lda     _pad1
 	lda     _player
 	sec
 	sbc     #$03
-	bcs     L0C31
+	bcs     L0C44
 	dex
-L0C31:	cmp     _x
+L0C44:	cmp     _x
 	txa
 	sbc     #$00
-	bcs     L0C32
+	bcs     L0C45
 	lda     #$03
-	jmp     L1222
-L0C32:	lda     _player
+	jmp     L122D
+L0C45:	lda     _player
 	sec
 	sbc     _x
-L1222:	sta     _player
+L122D:	sta     _player
 ;
 ; player.direction = DIR_LEFT;
 ;
@@ -4586,11 +4634,11 @@ L1222:	sta     _player
 ;
 ; } else {
 ;
-	jmp     L1226
+	jmp     L1231
 ;
 ; player.x += x;
 ;
-L1223:	lda     _x
+L122E:	lda     _x
 	clc
 	adc     _player
 	sta     _player
@@ -4598,56 +4646,56 @@ L1223:	lda     _x
 ; if (player.x > RIGHT_EDGE - PLAYER_WIDTH) player.x = RIGHT_EDGE - PLAYER_WIDTH;
 ;
 	cmp     #$DB
-	bcc     L1224
+	bcc     L122F
 	lda     #$DA
 	sta     _player
 ;
 ; player.direction = DIR_RIGHT;
 ;
-L1224:	lda     #$01
+L122F:	lda     #$01
 	sta     _player+8
 ;
 ; } else {
 ;
-	jmp     L1226
+	jmp     L1231
 ;
 ; --player.move_delay;
 ;
-L1225:	dec     _player+4
+L1230:	dec     _player+4
 ;
 ; if (game.state == GAME_ST_LEVEL_PLAYING ) {
 ;
-L1226:	lda     _game+3
+L1231:	lda     _game+3
 	cmp     #$01
-	bne     L0C57
+	bne     L0C6A
 ;
 ; if (pad1 & PAD_B || player.specials.active[SP_SLASH] != 0) {
 ;
 	lda     _pad1
 	and     #$40
-	bne     L1227
+	bne     L1232
 	lda     _player+26
-	beq     L1231
+	beq     L123C
 ;
 ; if (player.cut.state == CUT_ST_IDLE || (player.specials.active[SP_SLASH] != 0 && player.cut.state == CUT_ST_RECOVER)) {
 ;
-L1227:	lda     _player+11
-	beq     L122D
+L1232:	lda     _player+11
+	beq     L1238
 	lda     _player+26
-	beq     L0C57
+	beq     L0C6A
 	lda     _player+11
 	cmp     #$05
 	jne     _game_check_specials_keys
 ;
 ; player.cut.state = CUT_ST_C1;
 ;
-L122D:	lda     #$01
+L1238:	lda     #$01
 	sta     _player+11
 ;
 ; if (player.direction == DIR_LEFT) player.direction = DIR_RIGHT;
 ;
 	lda     _player+8
-	bne     L0C57
+	bne     L0C6A
 	lda     #$01
 	sta     _player+8
 ;
@@ -4657,15 +4705,15 @@ L122D:	lda     #$01
 ;
 ; if (player.cut.state == CUT_ST_RECOVER) player.cut.state = CUT_ST_IDLE;
 ;
-L1231:	lda     _player+11
+L123C:	lda     _player+11
 	cmp     #$05
-	bne     L0C57
+	bne     L0C6A
 	lda     #$00
 	sta     _player+11
 ;
 ; game_check_specials_keys();
 ;
-L0C57:	jmp     _game_check_specials_keys
+L0C6A:	jmp     _game_check_specials_keys
 
 .endproc
 
@@ -4683,7 +4731,7 @@ L0C57:	jmp     _game_check_specials_keys
 ; if (player.specials.delayed > 0) {
 ;
 	lda     _player+23
-	beq     L1234
+	beq     L123F
 ;
 ; --player.specials.delayed;
 ;
@@ -4692,7 +4740,7 @@ L0C57:	jmp     _game_check_specials_keys
 ; if (player.specials.delayed == 0) {
 ;
 	lda     _player+23
-	bne     L1234
+	bne     L123F
 ;
 ; player.specials.state[SP_DASH] = SP_IDLE;
 ;
@@ -4704,27 +4752,27 @@ L0C57:	jmp     _game_check_specials_keys
 ;
 ; if (player.abilities.elevel >= SP_SSCYTHE_ALEVEL) {
 ;
-L1234:	lda     _player+22
-	beq     L123C
+L123F:	lda     _player+22
+	beq     L1247
 ;
 ; if (pad1 & PAD_A && pad1 & PAD_UP && small_scythe.state == 0) {
 ;
 	lda     _pad1
 	and     #$80
-	beq     L123C
+	beq     L1247
 	lda     _pad1
 	and     #$08
-	beq     L123C
+	beq     L1247
 	lda     _small_scythe+5
-	bne     L123C
+	bne     L1247
 ;
 ; tmp = ability_max ? SP_SSCYTHE_SPEED_EX : SP_SSCYTHE_SPEED;
 ;
 	lda     _player+22
 	cmp     #$05
-	beq     L1239
+	beq     L1244
 	lda     #$03
-L1239:	sta     _tmp
+L1244:	sta     _tmp
 ;
 ; small_scythe.x = player.x + 0x0A;
 ;
@@ -4747,7 +4795,7 @@ L1239:	sta     _tmp
 ;
 	lda     _pad1
 	and     #$02
-	beq     L123A
+	beq     L1245
 	lda     _tmp
 	eor     #$FF
 	clc
@@ -4755,15 +4803,15 @@ L1239:	sta     _tmp
 ;
 ; else if (pad1 & PAD_RIGHT) small_scythe.x_speed = tmp;
 ;
-	jmp     L1232
-L123A:	lda     _pad1
+	jmp     L123D
+L1245:	lda     _pad1
 	and     #$01
-	beq     L1232
+	beq     L123D
 	lda     _tmp
 ;
 ; else small_scythe.x_speed = 0;
 ;
-L1232:	sta     _small_scythe+6
+L123D:	sta     _small_scythe+6
 ;
 ; small_scythe.state = small_scythe.sprite = 1;
 ;
@@ -4773,11 +4821,11 @@ L1232:	sta     _small_scythe+6
 ;
 ; if (player.abilities.elevel >= SP_DASH_ALEVEL && player.specials.active[SP_DASH] == 0) {
 ;
-L123C:	lda     _player+22
+L1247:	lda     _player+22
 	cmp     #$02
-	bcc     L1244
+	bcc     L124F
 	lda     _player+25
-	bne     L1244
+	bne     L124F
 ;
 ; switch (player.specials.state[SP_DASH]) {
 ;
@@ -4785,18 +4833,18 @@ L123C:	lda     _player+22
 ;
 ; }
 ;
-	beq     L1240
+	beq     L124B
 	cmp     #$01
-	beq     L1242
+	beq     L124D
 	cmp     #$02
-	beq     L1243
-	jmp     L1244
+	beq     L124E
+	jmp     L124F
 ;
 ; if (pad1_new & PAD_RIGHT) {
 ;
-L1240:	lda     _pad1_new
+L124B:	lda     _pad1_new
 	and     #$01
-	beq     L1241
+	beq     L124C
 ;
 ; player.specials.state[SP_DASH] = SP_DASH_RIGHT;
 ;
@@ -4810,9 +4858,9 @@ L1240:	lda     _pad1_new
 ;
 ; if (pad1_new & PAD_LEFT) {
 ;
-L1241:	lda     _pad1_new
+L124C:	lda     _pad1_new
 	and     #$02
-	beq     L1244
+	beq     L124F
 ;
 ; player.specials.state[SP_DASH] = SP_DASH_LEFT;
 ;
@@ -4825,22 +4873,22 @@ L1241:	lda     _pad1_new
 ;
 ; break;
 ;
-	jmp     L1233
+	jmp     L123E
 ;
 ; if (pad1_new & PAD_LEFT) {
 ;
-L1242:	lda     _pad1_new
+L124D:	lda     _pad1_new
 	and     #$02
 ;
 ; break;
 ;
-	jmp     L1250
+	jmp     L125B
 ;
 ; if (pad1_new & PAD_RIGHT) {
 ;
-L1243:	lda     _pad1_new
+L124E:	lda     _pad1_new
 	and     #$01
-L1250:	beq     L1244
+L125B:	beq     L124F
 ;
 ; player.specials.active[SP_DASH] = SP_DASH_LENGTH;
 ;
@@ -4850,40 +4898,40 @@ L1250:	beq     L1244
 ; player.specials.delayed = 0;
 ;
 	lda     #$00
-L1233:	sta     _player+23
+L123E:	sta     _player+23
 ;
 ; if (pad1_new & PAD_DOWN) {
 ;
-L1244:	lda     _pad1_new
+L124F:	lda     _pad1_new
 	and     #$04
-	beq     L0CD6
+	beq     L0CE9
 ;
 ; if (player.abilities.elevel >= SP_SLASH_ALEVEL && player.specials.active[SP_SLASH] == 0) {
 ;
 	lda     _player+22
 	cmp     #$04
-	bcc     L1246
+	bcc     L1251
 	lda     _player+26
-	beq     L1247
-L1246:	rts
+	beq     L1252
+L1251:	rts
 ;
 ; ++player.specials.state[SP_SLASH];
 ;
-L1247:	inc     _player+29
+L1252:	inc     _player+29
 ;
 ; if (player.specials.state[SP_SLASH] == SP_SLASH_TRIPLE_DOWN) {
 ;
 	lda     _player+29
 	cmp     #$03
-	bne     L124C
+	bne     L1257
 ;
 ; player.specials.active[SP_SLASH] = ability_max ? SP_SLASH_COUNT_EX : SP_SLASH_COUNT;
 ;
 	lda     _player+22
 	cmp     #$05
-	beq     L1249
+	beq     L1254
 	lda     #$03
-L1249:	sta     _player+26
+L1254:	sta     _player+26
 ;
 ; player.specials.state[SP_SLASH] = SP_IDLE;
 ;
@@ -4899,11 +4947,11 @@ L1249:	sta     _player+26
 ;
 	lda     _player+22
 	cmp     #$05
-	bne     L124A
+	bne     L1255
 	lda     #$01
-	jmp     L124B
-L124A:	lda     #$03
-L124B:	sta     _player+13
+	jmp     L1256
+L1255:	lda     #$03
+L1256:	sta     _player+13
 ;
 ; } else {
 ;
@@ -4911,12 +4959,12 @@ L124B:	sta     _player+13
 ;
 ; player.specials.delayed = SP_MAX_DELAY;
 ;
-L124C:	lda     #$10
+L1257:	lda     #$10
 	sta     _player+23
 ;
 ; }
 ;
-L0CD6:	rts
+L0CE9:	rts
 
 .endproc
 
@@ -4934,7 +4982,7 @@ L0CD6:	rts
 ; if (small_scythe.state != 0) {
 ;
 	lda     _small_scythe+5
-	beq     L0CEB
+	beq     L0CFE
 ;
 ; x = small_scythe.x + small_scythe.x_speed;
 ;
@@ -4954,14 +5002,14 @@ L0CD6:	rts
 ;
 	lda     _x
 	cmp     #$FB
-	bcs     L1252
+	bcs     L125D
 	lda     _y
 	cmp     #$E7
-	bcc     L1253
+	bcc     L125E
 ;
 ; small_scythe.state = 0;
 ;
-L1252:	lda     #$00
+L125D:	lda     #$00
 	sta     _small_scythe+5
 ;
 ; } else {
@@ -4970,7 +5018,7 @@ L1252:	lda     #$00
 ;
 ; ++small_scythe.state;
 ;
-L1253:	inc     _small_scythe+5
+L125E:	inc     _small_scythe+5
 ;
 ; small_scythe.x = x;
 ;
@@ -4986,7 +5034,7 @@ L1253:	inc     _small_scythe+5
 ;
 	lda     _small_scythe+5
 	cmp     #$04
-	bne     L0CEB
+	bne     L0CFE
 ;
 ; small_scythe.state = 1;
 ;
@@ -4997,17 +5045,17 @@ L1253:	inc     _small_scythe+5
 ;
 	lda     _small_scythe+4
 	cmp     #$07
-	bne     L1254
+	bne     L125F
 	lda     #$00
-	jmp     L1255
-L1254:	lda     _small_scythe+4
+	jmp     L1260
+L125F:	lda     _small_scythe+4
 	clc
 	adc     #$01
-L1255:	sta     _small_scythe+4
+L1260:	sta     _small_scythe+4
 ;
 ; }
 ;
-L0CEB:	rts
+L0CFE:	rts
 
 .endproc
 
@@ -5032,7 +5080,7 @@ L0CEB:	rts
 	lda     (sp),y
 	tay
 	lda     _bird_state,y
-	beq     L1259
+	beq     L1264
 ;
 ; }
 ;
@@ -5040,7 +5088,7 @@ L0CEB:	rts
 ;
 ; bird_state[bird_num] = 1;
 ;
-L1259:	tay
+L1264:	tay
 	lda     (sp),y
 	tay
 	lda     #$01
@@ -5050,7 +5098,7 @@ L1259:	tay
 ;
 	jsr     _rand8
 	and     #$01
-	bne     L0CFF
+	bne     L0D12
 ;
 ; bird_x[bird_num] = 2;
 ;
@@ -5069,11 +5117,11 @@ L1259:	tay
 ;
 ; } else {
 ;
-	jmp     L1256
+	jmp     L1261
 ;
 ; bird_x[bird_num] = 235;
 ;
-L0CFF:	ldy     #$00
+L0D12:	ldy     #$00
 	lda     (sp),y
 	tay
 	lda     #$EB
@@ -5085,7 +5133,7 @@ L0CFF:	ldy     #$00
 	lda     (sp),y
 	tay
 	lda     #$FF
-L1256:	sta     _bird_x_speed,y
+L1261:	sta     _bird_x_speed,y
 ;
 ; bird_tag[bird_num] = 0;
 ;
@@ -5102,9 +5150,9 @@ L1256:	sta     _bird_x_speed,y
 	ldy     #$00
 	clc
 	adc     (sp),y
-	bcc     L0D19
+	bcc     L0D2C
 	inx
-L0D19:	jsr     pushax
+L0D2C:	jsr     pushax
 	jsr     _rand8
 	jsr     asrax3
 	clc
@@ -5119,9 +5167,9 @@ L0D19:	jsr     pushax
 	ldy     #$00
 	clc
 	adc     (sp),y
-	bcc     L0D1F
+	bcc     L0D32
 	inx
-L0D1F:	jsr     pushax
+L0D32:	jsr     pushax
 	jsr     _rand8
 	jsr     pushax
 	lda     #$03
@@ -5138,36 +5186,36 @@ L0D1F:	jsr     pushax
 	ldy     #$00
 	clc
 	adc     (sp),y
-	bcc     L0D24
+	bcc     L0D37
 	inx
-L0D24:	sta     ptr1
+L0D37:	sta     ptr1
 	stx     ptr1+1
 	lda     (sp),y
 	tay
 	lda     _bird_pallete,y
 	cmp     #$03
-	bne     L0D28
+	bne     L0D3B
 	lda     #$04
-	jmp     L1257
-L0D28:	ldy     #$00
+	jmp     L1262
+L0D3B:	ldy     #$00
 	lda     (sp),y
 	tay
 	lda     _bird_pallete,y
-L1257:	ldy     #$00
+L1262:	ldy     #$00
 	sta     (ptr1),y
 ;
 ; if (game.level >= 5) ++bird_health[bird_num];
 ;
 	lda     _game
 	cmp     #$05
-	bcc     L1258
+	bcc     L1263
 	lda     #<(_bird_health)
 	ldx     #>(_bird_health)
 	clc
 	adc     (sp),y
-	bcc     L0D32
+	bcc     L0D45
 	inx
-L0D32:	sta     ptr1
+L0D45:	sta     ptr1
 	stx     ptr1+1
 	lda     #$01
 	clc
@@ -5176,16 +5224,16 @@ L0D32:	sta     ptr1
 ;
 ; if (game.level >= 10) ++bird_health[bird_num];
 ;
-L1258:	lda     _game
+L1263:	lda     _game
 	cmp     #$0A
-	bcc     L0D33
+	bcc     L0D46
 	lda     #<(_bird_health)
 	ldx     #>(_bird_health)
 	clc
 	adc     (sp),y
-	bcc     L0D37
+	bcc     L0D4A
 	inx
-L0D37:	sta     ptr1
+L0D4A:	sta     ptr1
 	stx     ptr1+1
 	lda     #$01
 	clc
@@ -5194,13 +5242,13 @@ L0D37:	sta     ptr1
 ;
 ; bird_speed_delay[bird_num] = bird_health[bird_num];
 ;
-L0D33:	lda     #<(_bird_speed_delay)
+L0D46:	lda     #<(_bird_speed_delay)
 	ldx     #>(_bird_speed_delay)
 	clc
 	adc     (sp),y
-	bcc     L0D3A
+	bcc     L0D4D
 	inx
-L0D3A:	jsr     pushax
+L0D4D:	jsr     pushax
 	ldy     #$02
 	lda     (sp),y
 	tay
@@ -5225,13 +5273,49 @@ L0D3A:	jsr     pushax
 .segment	"CODE"
 
 ;
+; ++bird_anim;
+;
+	inc     _bird_anim
+;
+; if (bird_anim == BIRDS_ANIM_DELAY) {
+;
+	lda     _bird_anim
+	cmp     #$05
+	bne     L126D
+;
+; bird_anim = 1;
+;
+	lda     #$01
+	sta     _bird_anim
+;
+; bird_sprite += bird_x_sprite;
+;
+	lda     _bird_x_sprite
+	clc
+	adc     _bird_sprite
+	sta     _bird_sprite
+;
+; if (bird_sprite == BIRDS_ANIM_LENGTH) bird_x_sprite = -1;
+;
+	cmp     #$04
+	bne     L126C
+	lda     #$FF
+	sta     _bird_x_sprite
+;
+; if (bird_sprite == 0) bird_x_sprite = 1;
+;
+L126C:	lda     _bird_sprite
+	bne     L126D
+	lda     #$01
+	sta     _bird_x_sprite
+;
 ; for (x = 0; x < BIRDS_COUNT; ++x) {
 ;
-	lda     #$00
+L126D:	lda     #$00
 	sta     _x
-L1261:	lda     _x
+L126E:	lda     _x
 	cmp     #$04
-	bcc     L1272
+	bcc     L127D
 ;
 ; }
 ;
@@ -5239,25 +5323,9 @@ L1261:	lda     _x
 ;
 ; if (bird_state[x] != 0) {
 ;
-L1272:	ldy     _x
+L127D:	ldy     _x
 	lda     _bird_state,y
-	jeq     L1271
-;
-; ++bird_state[x];
-;
-	lda     #<(_bird_state)
-	ldx     #>(_bird_state)
-	clc
-	adc     _x
-	bcc     L0D4D
-	inx
-L0D4D:	sta     ptr1
-	stx     ptr1+1
-	ldy     #$00
-	lda     #$01
-	clc
-	adc     (ptr1),y
-	sta     (ptr1),y
+	jeq     L127C
 ;
 ; --bird_speed_delay[x];
 ;
@@ -5265,10 +5333,11 @@ L0D4D:	sta     ptr1
 	ldx     #>(_bird_speed_delay)
 	clc
 	adc     _x
-	bcc     L0D50
+	bcc     L0D6F
 	inx
-L0D50:	sta     ptr1
+L0D6F:	sta     ptr1
 	stx     ptr1+1
+	ldy     #$00
 	lda     (ptr1),y
 	sec
 	sbc     #$01
@@ -5278,7 +5347,7 @@ L0D50:	sta     ptr1
 ;
 	ldy     _x
 	lda     _bird_speed_delay,y
-	bne     L0D51
+	bne     L0D70
 ;
 ; bird_x[x] += bird_x_speed[x];
 ;
@@ -5286,9 +5355,9 @@ L0D50:	sta     ptr1
 	ldx     #>(_bird_x)
 	clc
 	adc     _x
-	bcc     L0D57
+	bcc     L0D76
 	inx
-L0D57:	jsr     pushax
+L0D76:	jsr     pushax
 	sta     ptr1
 	stx     ptr1+1
 	ldy     #$00
@@ -5307,69 +5376,36 @@ L0D57:	jsr     pushax
 	ldx     #>(_bird_speed_delay)
 	clc
 	adc     _x
-	bcc     L0D5D
+	bcc     L0D7C
 	inx
-L0D5D:	sta     ptr1
+L0D7C:	sta     ptr1
 	stx     ptr1+1
 	ldy     _x
 	lda     _bird_health,y
 	ldy     #$00
 	sta     (ptr1),y
 ;
-; if (bird_state[x] == 0x0A) {
-;
-L0D51:	ldy     _x
-	lda     _bird_state,y
-	cmp     #$0A
-	bne     L0D61
-;
-; bird_state[x] = 1;
-;
-	ldy     _x
-	lda     #$01
-	sta     _bird_state,y
-;
-; bird_sprite[x] = bird_sprite[x] == 1 ? 0 : 1;
-;
-	lda     #<(_bird_sprite)
-	ldx     #>(_bird_sprite)
-	clc
-	adc     _x
-	bcc     L0D6B
-	inx
-L0D6B:	sta     ptr1
-	stx     ptr1+1
-	ldy     _x
-	lda     _bird_sprite,y
-	cmp     #$01
-	bne     L1262
-	lda     #$00
-	jmp     L1263
-L1262:	lda     #$01
-L1263:	ldy     #$00
-	sta     (ptr1),y
-;
 ; if (bird_x[x] <= 1 || bird_x[x] > 235) bird_state[x] = 0;
 ;
-L0D61:	ldy     _x
+L0D70:	ldy     _x
 	lda     _bird_x,y
 	cmp     #$02
-	bcc     L1264
+	bcc     L126F
 	ldy     _x
 	lda     _bird_x,y
 	cmp     #$EC
-	bcc     L1265
-L1264:	ldy     _x
+	bcc     L1270
+L126F:	ldy     _x
 	lda     #$00
 	sta     _bird_state,y
 ;
 ; if (small_scythe.state != 0 && bird_tag[x] == 0) {
 ;
-L1265:	lda     _small_scythe+5
-	jeq     L126F
+L1270:	lda     _small_scythe+5
+	jeq     L127A
 	ldy     _x
 	lda     _bird_tag,y
-	jne     L126E
+	jne     L1279
 ;
 ; if (small_scythe.x <= bird_x[x] + BIRDS_WIDTH && 
 ;
@@ -5379,25 +5415,25 @@ L1265:	lda     _small_scythe+5
 	lda     _bird_x,y
 	clc
 	adc     #$10
-	bcc     L0D88
+	bcc     L0D95
 	ldx     #$01
-L0D88:	jsr     tosicmp
-	beq     L125F
-	jcs     L126E
+L0D95:	jsr     tosicmp
+	beq     L126A
+	jcs     L1279
 ;
 ; small_scythe.x + SP_SSCYTHE_SIZE >= bird_x[x] &&
 ;
-L125F:	ldx     #$00
+L126A:	ldx     #$00
 	lda     _small_scythe
 	clc
 	adc     #$10
-	bcc     L0D8A
+	bcc     L0D97
 	inx
-L0D8A:	jsr     pushax
+L0D97:	jsr     pushax
 	ldy     _x
 	lda     _bird_x,y
 	jsr     tosicmp0
-	jcc     L126E
+	jcc     L1279
 ;
 ; small_scythe.y <= bird_y[x] + BIRDS_HEIGHT && 
 ;
@@ -5407,35 +5443,35 @@ L0D8A:	jsr     pushax
 	lda     _bird_y,y
 	clc
 	adc     #$08
-	bcc     L0D8F
+	bcc     L0D9C
 	ldx     #$01
-L0D8F:	jsr     tosicmp
-	beq     L1260
-	jcs     L126E
+L0D9C:	jsr     tosicmp
+	beq     L126B
+	jcs     L1279
 ;
 ; small_scythe.y + SP_SSCYTHE_SIZE >= bird_y[x]) {
 ;
-L1260:	ldx     #$00
+L126B:	ldx     #$00
 	lda     _small_scythe+1
 	clc
 	adc     #$10
-	bcc     L0D90
+	bcc     L0D9D
 	inx
-L0D90:	jsr     pushax
+L0D9D:	jsr     pushax
 	ldy     _x
 	lda     _bird_y,y
 	jsr     tosicmp0
-	jcc     L126E
+	jcc     L1279
 ;
 ; tmp = ability_ex ? SP_SSCYTHE_DMG_EX : SP_SSCYTHE_DMG;
 ;
 	lda     _player+22
 	cmp     #$03
-	bcc     L1269
+	bcc     L1274
 	lda     #$02
-	jmp     L126A
-L1269:	lda     #$01
-L126A:	sta     _tmp
+	jmp     L1275
+L1274:	lda     #$01
+L1275:	sta     _tmp
 ;
 ; small_scythe.state = 0;
 ;
@@ -5450,12 +5486,12 @@ L126A:	sta     _tmp
 	sbc     _tmp
 	sta     tmp1
 	lda     tmp1
-	beq     L125D
-	bcs     L0D9D
+	beq     L1268
+	bcs     L0DAA
 ;
 ; bird_tag[x] = BIRDS_TAG_DIE;
 ;
-L125D:	ldy     _x
+L1268:	ldy     _x
 	lda     #$19
 	sta     _bird_tag,y
 ;
@@ -5483,7 +5519,7 @@ L125D:	ldy     _x
 ;
 	lda     _points
 	cmp     #$63
-	bcs     L126E
+	bcs     L1279
 ;
 ; switch (bird_pallete[x]) {
 ;
@@ -5493,16 +5529,16 @@ L125D:	ldy     _x
 ; }
 ;
 	cmp     #$01
-	beq     L126B
+	beq     L1276
 	cmp     #$02
-	beq     L126C
+	beq     L1277
 	cmp     #$03
-	beq     L126D
-	jmp     L126E
+	beq     L1278
+	jmp     L1279
 ;
 ; case 1: player.cut.count += grass.col_for_point >> 1; 
 ;
-L126B:	lda     _grass+3
+L1276:	lda     _grass+3
 	lsr     a
 	clc
 	adc     _player+15
@@ -5514,11 +5550,11 @@ L126B:	lda     _grass+3
 ;
 ; break;
 ;
-	jmp     L126E
+	jmp     L1279
 ;
 ; case 2: ++points; 
 ;
-L126C:	inc     _points
+L1277:	inc     _points
 ;
 ; game_draw_points();
 ;
@@ -5526,11 +5562,11 @@ L126C:	inc     _points
 ;
 ; break;
 ;
-	jmp     L126E
+	jmp     L1279
 ;
 ; case 3: points += 2; 
 ;
-L126D:	lda     #$02
+L1278:	lda     #$02
 	clc
 	adc     _points
 	sta     _points
@@ -5541,17 +5577,17 @@ L126D:	lda     #$02
 ;
 ; break;
 ;
-	jmp     L126E
+	jmp     L1279
 ;
 ; bird_health[x] -= tmp;
 ;
-L0D9D:	lda     #<(_bird_health)
+L0DAA:	lda     #<(_bird_health)
 	ldx     #>(_bird_health)
 	clc
 	adc     _x
-	bcc     L0DC4
+	bcc     L0DD1
 	inx
-L0DC4:	jsr     pushax
+L0DD1:	jsr     pushax
 	sta     ptr1
 	stx     ptr1+1
 	ldy     #$00
@@ -5568,21 +5604,21 @@ L0DC4:	jsr     pushax
 ;
 ; tmp = 0;
 ;
-L126E:	lda     #$00
-L126F:	sta     _tmp
+L1279:	lda     #$00
+L127A:	sta     _tmp
 ;
 ; if (bird_tag[x] > 0) --bird_tag[x];
 ;
 	ldy     _x
 	lda     _bird_tag,y
-	beq     L0DCC
+	beq     L0DD9
 	lda     #<(_bird_tag)
 	ldx     #>(_bird_tag)
 	clc
 	adc     _x
-	bcc     L0DD2
+	bcc     L0DDF
 	inx
-L0DD2:	sta     ptr1
+L0DDF:	sta     ptr1
 	stx     ptr1+1
 	ldy     #$00
 	lda     (ptr1),y
@@ -5592,10 +5628,10 @@ L0DD2:	sta     ptr1
 ;
 ; if (bird_tag[x] > BIRDS_TAG_HIT) {
 ;
-L0DCC:	ldy     _x
+L0DD9:	ldy     _x
 	lda     _bird_tag,y
 	cmp     #$06
-	bcc     L0DD3
+	bcc     L0DE0
 ;
 ; tmp = BIRDS_TAG_DIE - bird_tag[x];
 ;
@@ -5611,7 +5647,7 @@ L0DCC:	ldy     _x
 	ldy     _x
 	lda     _bird_tag,y
 	cmp     #$06
-	bne     L0DD3
+	bne     L0DE0
 ;
 ; bird_state[x] = 0;
 ;
@@ -5621,22 +5657,22 @@ L0DCC:	ldy     _x
 ;
 ; if (bird_tag[x] == 0 || bird_tag[x] > BIRDS_TAG_HIT)
 ;
-L0DD3:	ldy     _x
+L0DE0:	ldy     _x
 	lda     _bird_tag,y
-	beq     L1270
+	beq     L127B
 	ldy     _x
 	lda     _bird_tag,y
 	cmp     #$06
-	jcc     L1271
+	jcc     L127C
 ;
 ; if (bird_x_speed[x] == 1) {
 ;
-L1270:	ldy     _x
+L127B:	ldy     _x
 	lda     _bird_x_speed,y
 	cmp     #$01
-	bne     L0DEA
+	bne     L0DF7
 ;
-; oam_spr(bird_x[x] + 0x08, bird_y[x] - tmp, 0x19, bird_pallete[x] - 1 | OAM_FLIP_H);
+; oam_spr(bird_x[x] + 0x08, bird_y[x] - tmp, 0x29, bird_pallete[x] - 1 | OAM_FLIP_H);
 ;
 	jsr     decsp3
 	ldy     _x
@@ -5651,7 +5687,7 @@ L1270:	ldy     _x
 	sbc     _tmp
 	ldy     #$01
 	sta     (sp),y
-	lda     #$19
+	lda     #$29
 	dey
 	sta     (sp),y
 	ldy     _x
@@ -5661,7 +5697,7 @@ L1270:	ldy     _x
 	ora     #$40
 	jsr     _oam_spr
 ;
-; oam_spr(bird_x[x], bird_y[x] + tmp, 0x1A + bird_sprite[x], bird_pallete[x] - 1 | OAM_FLIP_H );
+; oam_spr(bird_x[x], bird_y[x] + tmp, 0x2A + bird_sprite, bird_pallete[x] - 1 | OAM_FLIP_H );
 ;
 	jsr     decsp3
 	ldy     _x
@@ -5674,11 +5710,10 @@ L1270:	ldy     _x
 	adc     _tmp
 	ldy     #$01
 	sta     (sp),y
-	ldy     _x
-	lda     _bird_sprite,y
+	lda     _bird_sprite
 	clc
-	adc     #$1A
-	ldy     #$00
+	adc     #$2A
+	dey
 	sta     (sp),y
 	ldy     _x
 	lda     _bird_pallete,y
@@ -5688,11 +5723,11 @@ L1270:	ldy     _x
 ;
 ; } else {
 ;
-	jmp     L125E
+	jmp     L1269
 ;
-; oam_spr(bird_x[x], bird_y[x] - tmp, 0x19, bird_pallete[x] - 1);
+; oam_spr(bird_x[x], bird_y[x] - tmp, 0x29, bird_pallete[x] - 1);
 ;
-L0DEA:	jsr     decsp3
+L0DF7:	jsr     decsp3
 	ldy     _x
 	lda     _bird_x,y
 	ldy     #$02
@@ -5703,7 +5738,7 @@ L0DEA:	jsr     decsp3
 	sbc     _tmp
 	ldy     #$01
 	sta     (sp),y
-	lda     #$19
+	lda     #$29
 	dey
 	sta     (sp),y
 	ldy     _x
@@ -5712,7 +5747,7 @@ L0DEA:	jsr     decsp3
 	sbc     #$01
 	jsr     _oam_spr
 ;
-; oam_spr(bird_x[x] + 0x08, bird_y[x] + tmp, 0x1A + bird_sprite[x], bird_pallete[x] - 1);
+; oam_spr(bird_x[x] + 0x08, bird_y[x] + tmp, 0x2A + bird_sprite, bird_pallete[x] - 1);
 ;
 	jsr     decsp3
 	ldy     _x
@@ -5727,22 +5762,21 @@ L0DEA:	jsr     decsp3
 	adc     _tmp
 	ldy     #$01
 	sta     (sp),y
-	ldy     _x
-	lda     _bird_sprite,y
+	lda     _bird_sprite
 	clc
-	adc     #$1A
-	ldy     #$00
+	adc     #$2A
+	dey
 	sta     (sp),y
 	ldy     _x
 	lda     _bird_pallete,y
 	sec
 	sbc     #$01
-L125E:	jsr     _oam_spr
+L1269:	jsr     _oam_spr
 ;
 ; for (x = 0; x < BIRDS_COUNT; ++x) {
 ;
-L1271:	inc     _x
-	jmp     L1261
+L127C:	inc     _x
+	jmp     L126E
 
 .endproc
 
@@ -5826,9 +5860,9 @@ L1271:	inc     _x
 ;
 	lda     #$00
 	sta     _x
-L1274:	lda     _x
+L127F:	lda     _x
 	cmp     #$40
-	beq     L1275
+	beq     L1280
 ;
 ; vram_put(0x00);
 ;
@@ -5838,15 +5872,15 @@ L1274:	lda     _x
 ; for (x = 0x00; x != 0x40; ++x) {
 ;
 	inc     _x
-	jmp     L1274
+	jmp     L127F
 ;
 ; for (y = 0x02; y != 0x1B; ++y) {
 ;
-L1275:	lda     #$02
+L1280:	lda     #$02
 	sta     _y
-L1276:	lda     _y
+L1281:	lda     _y
 	cmp     #$1B
-	beq     L1279
+	beq     L1284
 ;
 ; vram_adr(NAMETABLE_A + SCREEN_TILES_X * y + 0x02);
 ;
@@ -5864,48 +5898,48 @@ L1276:	lda     _y
 	pla
 	clc
 	adc     #$02
-	bcc     L0E51
+	bcc     L0E5A
 	inx
-L0E51:	jsr     _vram_adr
+L0E5A:	jsr     _vram_adr
 ;
 ; if (y == 0x02 || y == 0x18 || y == 0x1A) {
 ;
 	lda     _y
 	cmp     #$02
-	beq     L1277
+	beq     L1282
 	cmp     #$18
-	beq     L1277
+	beq     L1282
 	cmp     #$1A
-	bne     L0E52
+	bne     L0E5B
 ;
 ; vram_put(CHR_BORDER_CORNER);
 ;
-L1277:	lda     #$26
+L1282:	lda     #$26
 	jsr     _vram_put
 ;
 ; for(x = 0x00; x != 0x1A; ++x) vram_put(CHR_BORDER_HORZ);
 ;
 	lda     #$00
 	sta     _x
-L1278:	lda     _x
+L1283:	lda     _x
 	cmp     #$1A
-	beq     L0E58
+	beq     L0E61
 	lda     #$27
 	jsr     _vram_put
 	inc     _x
-	jmp     L1278
+	jmp     L1283
 ;
 ; vram_put(CHR_BORDER_CORNER);
 ;
-L0E58:	lda     #$26
+L0E61:	lda     #$26
 ;
 ; } else {
 ;
-	jmp     L1273
+	jmp     L127E
 ;
 ; vram_put(CHR_BORDER_VERT);
 ;
-L0E52:	lda     #$2A
+L0E5B:	lda     #$2A
 	jsr     _vram_put
 ;
 ; vram_adr(NAMETABLE_A + SCREEN_TILES_X * y + 0x1D);
@@ -5924,23 +5958,23 @@ L0E52:	lda     #$2A
 	pla
 	clc
 	adc     #$1D
-	bcc     L0E68
+	bcc     L0E71
 	inx
-L0E68:	jsr     _vram_adr
+L0E71:	jsr     _vram_adr
 ;
 ; vram_put(CHR_BORDER_VERT);
 ;
 	lda     #$2A
-L1273:	jsr     _vram_put
+L127E:	jsr     _vram_put
 ;
 ; for (y = 0x02; y != 0x1B; ++y) {
 ;
 	inc     _y
-	jmp     L1276
+	jmp     L1281
 ;
 ; index = 0x00;
 ;
-L1279:	lda     #$00
+L1284:	lda     #$00
 	sta     _index
 ;
 ; adr = NAMETABLE_A + SCREEN_TILES_X * 0x04 + 0x04;
@@ -5954,9 +5988,9 @@ L1279:	lda     #$00
 ;
 	lda     #$00
 	sta     _x
-L127A:	lda     _x
+L1285:	lda     _x
 	cmp     #$05
-	beq     L0E70
+	beq     L0E79
 ;
 ; tmp = player.abilities.list[x];
 ;
@@ -5972,106 +6006,106 @@ L127A:	lda     _x
 ;
 	lda     #$00
 	sta     _y
-L127B:	lda     _y
+L1286:	lda     _y
 	cmp     #$05
-	beq     L0E7D
+	beq     L0E86
 ;
 ; vram_put(y < tmp ? CHR_FCELL_TOP : CHR_CELL_TOP);
 ;
 	cmp     _tmp
-	bcs     L127C
+	bcs     L1287
 	lda     #$23
-	jmp     L127D
-L127C:	lda     #$22
-L127D:	jsr     _vram_put
+	jmp     L1288
+L1287:	lda     #$22
+L1288:	jsr     _vram_put
 ;
 ; for (y = 0x00; y != ABILITY_MAX_LEVEL; ++y)
 ;
 	inc     _y
-	jmp     L127B
+	jmp     L1286
 ;
 ; adr += SCREEN_TILES_X;
 ;
-L0E7D:	lda     #$20
+L0E86:	lda     #$20
 	clc
 	adc     _adr
 	sta     _adr
-	bcc     L0E8C
+	bcc     L0E95
 	inc     _adr+1
 ;
 ; upgrade_draw_icon();
 ;
-L0E8C:	jsr     _upgrade_draw_icon
+L0E95:	jsr     _upgrade_draw_icon
 ;
 ; for (y = 0x00; y != ABILITY_MAX_LEVEL; ++y)
 ;
 	lda     #$00
 	sta     _y
-L127E:	lda     _y
+L1289:	lda     _y
 	cmp     #$05
-	beq     L0E8F
+	beq     L0E98
 ;
 ; vram_put(y < tmp ? CHR_FCELL_BOTTOM : CHR_CELL_BOTTOM);
 ;
 	cmp     _tmp
-	bcs     L127F
+	bcs     L128A
 	lda     #$25
-	jmp     L1280
-L127F:	lda     #$24
-L1280:	jsr     _vram_put
+	jmp     L128B
+L128A:	lda     #$24
+L128B:	jsr     _vram_put
 ;
 ; for (y = 0x00; y != ABILITY_MAX_LEVEL; ++y)
 ;
 	inc     _y
-	jmp     L127E
+	jmp     L1289
 ;
 ; adr += SCREEN_TILES_X + SCREEN_TILES_X;
 ;
-L0E8F:	lda     #$40
+L0E98:	lda     #$40
 	clc
 	adc     _adr
 	sta     _adr
-	bcc     L0E9E
+	bcc     L0EA7
 	inc     _adr+1
 ;
 ; for(x = 0x00; x != ABILITIES_COUNT; ++x) {
 ;
-L0E9E:	inc     _x
-	jmp     L127A
+L0EA7:	inc     _x
+	jmp     L1285
 ;
 ; put_str(NTADR_A(0x03, 0x19), "                POINTS    ");
 ;
-L0E70:	ldx     #$23
+L0E79:	ldx     #$23
 	txa
 	jsr     pushax
-	lda     #<(L0EA6)
-	ldx     #>(L0EA6)
+	lda     #<(L0EAF)
+	ldx     #>(L0EAF)
 	jsr     _put_str
 ;
 ; for (x = 0x01; x != ABILITY_MAX_LEVEL; ++x) {
 ;
 	lda     #$01
 	sta     _x
-L1281:	lda     _x
+L128C:	lda     _x
 	cmp     #$05
-	beq     L0EA9
+	beq     L0EB2
 ;
 ; if (player.abilities.elevel >= x) upgrade_draw_desc(x);
 ;
 	lda     _player+22
 	cmp     _x
-	bcc     L0EA9
+	bcc     L0EB2
 	lda     _x
 	jsr     _upgrade_draw_desc
 ;
 ; for (x = 0x01; x != ABILITY_MAX_LEVEL; ++x) {
 ;
 	inc     _x
-	jmp     L1281
+	jmp     L128C
 ;
 ; upgrade_show_ablity_desc();
 ;
-L0EA9:	jsr     _upgrade_show_ablity_desc
+L0EB2:	jsr     _upgrade_show_ablity_desc
 ;
 ; upgrade_show_current_points();
 ;
@@ -6085,9 +6119,9 @@ L0EA9:	jsr     _upgrade_show_ablity_desc
 ;
 	lda     #$01
 	sta     _x
-L1282:	lda     _x
+L128D:	lda     _x
 	cmp     #$06
-	bcs     L0EB9
+	bcs     L0EC2
 ;
 ; ppu_wait_nmi();
 ;
@@ -6101,18 +6135,18 @@ L1282:	lda     _x
 ;
 	lda     _player+22
 	cmp     _x
-	bcc     L0EB9
+	bcc     L0EC2
 	lda     _x
 	jsr     _upgrade_draw_desc
 ;
 ; for (x = 0x01; x <= ABILITY_MAX_LEVEL; ++x) {
 ;
 	inc     _x
-	jmp     L1282
+	jmp     L128D
 ;
 ; fade_out();
 ;
-L0EB9:	jmp     _fade_out
+L0EC2:	jmp     _fade_out
 
 .endproc
 
@@ -6136,7 +6170,7 @@ L0EB9:	jmp     _fade_out
 ;
 	lda     _pad1_new
 	and     #$04
-	beq     L1284
+	beq     L128F
 ;
 ; sfx_play(SND_MENU_MOVE, 0);
 ;
@@ -6148,24 +6182,24 @@ L0EB9:	jmp     _fade_out
 ;
 	lda     _player+16
 	cmp     #$04
-	bne     L1283
+	bne     L128E
 	lda     #$00
 	sta     _player+16
 ;
 ; else ++player.abilities.selection;
 ;
-	jmp     L0F6A
-L1283:	inc     _player+16
+	jmp     L0F73
+L128E:	inc     _player+16
 ;
 ; upgrade_show_ablity_desc();
 ;
-L0F6A:	jsr     _upgrade_show_ablity_desc
+L0F73:	jsr     _upgrade_show_ablity_desc
 ;
 ; if (pad1_new & PAD_UP) {
 ;
-L1284:	lda     _pad1_new
+L128F:	lda     _pad1_new
 	and     #$08
-	beq     L1286
+	beq     L1291
 ;
 ; sfx_play(SND_MENU_MOVE, 0);
 ;
@@ -6176,33 +6210,33 @@ L1284:	lda     _pad1_new
 ; if (player.abilities.selection == 0) player.abilities.selection = ABILITIES_COUNT - 1;
 ;
 	lda     _player+16
-	bne     L1285
+	bne     L1290
 	lda     #$04
 	sta     _player+16
 ;
 ; else --player.abilities.selection;
 ;
-	jmp     L0F76
-L1285:	dec     _player+16
+	jmp     L0F7F
+L1290:	dec     _player+16
 ;
 ; upgrade_show_ablity_desc();
 ;
-L0F76:	jsr     _upgrade_show_ablity_desc
+L0F7F:	jsr     _upgrade_show_ablity_desc
 ;
 ; if (pad1_new & PAD_B) {
 ;
-L1286:	lda     _pad1_new
+L1291:	lda     _pad1_new
 	and     #$40
-	jeq     L1295
+	jeq     L12A0
 ;
 ; if (tmp != ABILITY_MAX_LEVEL && points >= index) {
 ;
 	lda     _tmp
 	cmp     #$05
-	jeq     L0F7B
+	jeq     L0F84
 	lda     _points
 	cmp     _index
-	jcc     L0F7B
+	jcc     L0F84
 ;
 ; sfx_play(SND_MENU_UPGRADE, 0);
 ;
@@ -6240,9 +6274,9 @@ L1286:	lda     _pad1_new
 	jsr     mulax3
 	clc
 	adc     #$04
-	bcc     L0F8E
+	bcc     L0F97
 	inx
-L0F8E:	jsr     shlax4
+L0F97:	jsr     shlax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -6251,9 +6285,9 @@ L0F8E:	jsr     shlax4
 	lda     _tmp
 	clc
 	adc     #$06
-	bcc     L0F90
+	bcc     L0F99
 	inx
-L0F90:	ora     ptr1
+L0F99:	ora     ptr1
 	pha
 	txa
 	ora     tmp1
@@ -6275,9 +6309,9 @@ L0F90:	ora     ptr1
 	jsr     mulax3
 	clc
 	adc     #$05
-	bcc     L0F98
+	bcc     L0FA1
 	inx
-L0F98:	jsr     shlax4
+L0FA1:	jsr     shlax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -6286,9 +6320,9 @@ L0F98:	jsr     shlax4
 	lda     _tmp
 	clc
 	adc     #$06
-	bcc     L0F9A
+	bcc     L0FA3
 	inx
-L0F9A:	ora     ptr1
+L0FA3:	ora     ptr1
 	pha
 	txa
 	ora     tmp1
@@ -6313,93 +6347,93 @@ L0F9A:	ora     ptr1
 ;
 ; }
 ;
-	beq     L128E
+	beq     L1299
 	cmp     #$01
-	beq     L128A
+	beq     L1295
 	cmp     #$02
-	beq     L1289
-	cmp     #$03
-	beq     L128F
-	cmp     #$04
 	beq     L1294
-	jmp     L1295
+	cmp     #$03
+	beq     L129A
+	cmp     #$04
+	beq     L129F
+	jmp     L12A0
 ;
 ; ++player.cut.size; 
 ;
-L1289:	inc     _player+10
+L1294:	inc     _player+10
 ;
 ; break;
 ;
-	jmp     L1295
+	jmp     L12A0
 ;
 ; if (tmp == 1 || tmp == 3 || tmp == 5) ++player.cut.power; 
 ;
-L128A:	lda     _tmp
+L1295:	lda     _tmp
 	cmp     #$01
-	beq     L128D
+	beq     L1298
 	cmp     #$03
-	beq     L128D
+	beq     L1298
 	cmp     #$05
-	bne     L1295
-L128D:	inc     _player+9
+	bne     L12A0
+L1298:	inc     _player+9
 ;
 ; break;
 ;
-	jmp     L1295
+	jmp     L12A0
 ;
 ; --player.cut.max_delay; 
 ;
-L128E:	dec     _player+13
+L1299:	dec     _player+13
 ;
 ; break;
 ;
-	jmp     L1295
+	jmp     L12A0
 ;
 ; if (player.move_max_delay == 0) {
 ;
-L128F:	lda     _player+5
-	bne     L1292
+L129A:	lda     _player+5
+	bne     L129D
 ;
 ; if (player.move_max_increase == 0) player.move_max_increase = 3;
 ;
 	lda     _player+7
-	bne     L1290
+	bne     L129B
 	lda     #$03
 	sta     _player+7
 ;
 ; else --player.move_max_increase;
 ;
-	jmp     L1291
-L1290:	dec     _player+7
+	jmp     L129C
+L129B:	dec     _player+7
 ;
 ; player.move_increase = player.move_max_increase;
 ;
-L1291:	lda     _player+7
+L129C:	lda     _player+7
 	sta     _player+6
 ;
 ; } else {
 ;
-	jmp     L1293
+	jmp     L129E
 ;
 ; --player.move_max_delay; 
 ;
-L1292:	dec     _player+5
+L129D:	dec     _player+5
 ;
 ; if (tmp == ABILITY_MAX_LEVEL) upgrade_draw_desc(player.abilities.elevel);
 ;
-L1293:	lda     _tmp
+L129E:	lda     _tmp
 	cmp     #$05
-	bne     L1295
+	bne     L12A0
 	lda     _player+22
 	jsr     _upgrade_draw_desc
 ;
 ; break;
 ;
-	jmp     L1295
+	jmp     L12A0
 ;
 ; ++player.abilities.elevel;
 ;
-L1294:	inc     _player+22
+L129F:	inc     _player+22
 ;
 ; upgrade_draw_desc(player.abilities.elevel);
 ;
@@ -6408,26 +6442,26 @@ L1294:	inc     _player+22
 ;
 ; break;
 ;
-	jmp     L1295
+	jmp     L12A0
 ;
 ; sfx_play(SND_MENU_ERROR, 0);
 ;
-L0F7B:	lda     #$03
+L0F84:	lda     #$03
 	jsr     pusha
 	lda     #$00
 	jsr     _sfx_play
 ;
 ; if (pad1_new & PAD_START) state = 1;
 ;
-L1295:	lda     _pad1_new
+L12A0:	lda     _pad1_new
 	and     #$10
-	beq     L0FC9
+	beq     L0FD2
 	lda     #$01
 	sta     _state
 ;
 ; } 
 ;
-L0FC9:	rts
+L0FD2:	rts
 
 .endproc
 
@@ -6454,25 +6488,25 @@ L0FC9:	rts
 ; }
 ;
 	cmp     #$01
-	beq     L0ECD
+	beq     L0ED6
 	cmp     #$02
-	beq     L0EE3
+	beq     L0EEC
 	cmp     #$03
-	beq     L0EF9
+	beq     L0F02
 	cmp     #$04
-	jeq     L0F0F
+	jeq     L0F18
 	cmp     #$05
-	jeq     L0F25
+	jeq     L0F2E
 	jmp     incsp1
 ;
 ; case 1: multi_vram_buffer_horz(" SMALL SCYTHE ", 0x0E, NTADR_A(0x0E, 0x04));
 ;
-L0ECD:	jsr     decsp3
-	lda     #<(L0ECF)
+L0ED6:	jsr     decsp3
+	lda     #<(L0ED8)
 	iny
 	sta     (sp),y
 	iny
-	lda     #>(L0ECF)
+	lda     #>(L0ED8)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6484,11 +6518,11 @@ L0ECD:	jsr     decsp3
 ; multi_vram_buffer_horz(" \\ [ A        ", 0x0E, NTADR_A(0x0E, 0x05));
 ;
 	jsr     decsp3
-	lda     #<(L0ED9)
+	lda     #<(L0EE2)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0ED9)
+	lda     #>(L0EE2)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6498,16 +6532,16 @@ L0ECD:	jsr     decsp3
 ;
 ; break;
 ;
-	jmp     L1296
+	jmp     L12A1
 ;
 ; case 2: multi_vram_buffer_horz(" DASH         ", 0x0E, NTADR_A(0x0E, 0x07));
 ;
-L0EE3:	jsr     decsp3
-	lda     #<(L0EE5)
+L0EEC:	jsr     decsp3
+	lda     #<(L0EEE)
 	iny
 	sta     (sp),y
 	iny
-	lda     #>(L0EE5)
+	lda     #>(L0EEE)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6519,11 +6553,11 @@ L0EE3:	jsr     decsp3
 ; multi_vram_buffer_horz(" ^ ^ OR _ _   ", 0x0E, NTADR_A(0x0E, 0x08));
 ;
 	jsr     decsp3
-	lda     #<(L0EEF)
+	lda     #<(L0EF8)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0EEF)
+	lda     #>(L0EF8)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6532,16 +6566,16 @@ L0EE3:	jsr     decsp3
 ;
 ; break;
 ;
-	jmp     L1296
+	jmp     L12A1
 ;
 ; case 3: multi_vram_buffer_horz(" ABILITIES    ", 0x0E, NTADR_A(0x0E, 0x10));
 ;
-L0EF9:	jsr     decsp3
-	lda     #<(L0EFB)
+L0F02:	jsr     decsp3
+	lda     #<(L0F04)
 	iny
 	sta     (sp),y
 	iny
-	lda     #>(L0EFB)
+	lda     #>(L0F04)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6552,11 +6586,11 @@ L0EF9:	jsr     decsp3
 ; multi_vram_buffer_horz(" POWER[       ", 0x0E,  NTADR_A(0x0E, 0x11));
 ;
 	jsr     decsp3
-	lda     #<(L0F05)
+	lda     #<(L0F0E)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0F05)
+	lda     #>(L0F0E)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6566,16 +6600,16 @@ L0EF9:	jsr     decsp3
 ;
 ; break;
 ;
-	jmp     L1296
+	jmp     L12A1
 ;
 ; case 4: multi_vram_buffer_horz(" POWER SLASH  ", 0x0E, NTADR_A(0x0E, 0x0A));
 ;
-L0F0F:	jsr     decsp3
-	lda     #<(L0F11)
+L0F18:	jsr     decsp3
+	lda     #<(L0F1A)
 	iny
 	sta     (sp),y
 	iny
-	lda     #>(L0F11)
+	lda     #>(L0F1A)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6587,11 +6621,11 @@ L0F0F:	jsr     decsp3
 ; multi_vram_buffer_horz(" ] ] ]        ", 0x0E,  NTADR_A(0x0E, 0x0B));
 ;
 	jsr     decsp3
-	lda     #<(L0F1B)
+	lda     #<(L0F24)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0F1B)
+	lda     #>(L0F24)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6601,16 +6635,16 @@ L0F0F:	jsr     decsp3
 ;
 ; break;
 ;
-	jmp     L1296
+	jmp     L12A1
 ;
 ; case 5: multi_vram_buffer_horz("[", 0x01,  NTADR_A(0x15, 0x11));
 ;
-L0F25:	jsr     decsp3
-	lda     #<(L0F27)
+L0F2E:	jsr     decsp3
+	lda     #<(L0F30)
 	iny
 	sta     (sp),y
 	iny
-	lda     #>(L0F27)
+	lda     #>(L0F30)
 	sta     (sp),y
 	lda     #$01
 	ldy     #$00
@@ -6623,16 +6657,16 @@ L0F25:	jsr     decsp3
 ;
 	lda     _player+20
 	cmp     #$05
-	bne     L0ECB
+	bne     L0ED4
 ;
 ; multi_vram_buffer_horz(" MOVE AND CUT ", 0x0E,  NTADR_A(0x0E, 0x0D));
 ;
 	jsr     decsp3
-	lda     #<(L0F34)
+	lda     #<(L0F3D)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0F34)
+	lda     #>(L0F3D)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
@@ -6644,22 +6678,22 @@ L0F25:	jsr     decsp3
 ; multi_vram_buffer_horz(" ACTIVATED    ", 0x0E ,  NTADR_A(0x0E, 0x0E));
 ;
 	jsr     decsp3
-	lda     #<(L0F3E)
+	lda     #<(L0F47)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0F3E)
+	lda     #>(L0F47)
 	sta     (sp),y
 	lda     #$0E
 	ldy     #$00
 	sta     (sp),y
 	ldx     #$21
 	lda     #$CE
-L1296:	jsr     _multi_vram_buffer_horz
+L12A1:	jsr     _multi_vram_buffer_horz
 ;
 ; }
 ;
-L0ECB:	jmp     incsp1
+L0ED4:	jmp     incsp1
 
 .endproc
 
@@ -6722,7 +6756,7 @@ L0ECB:	jmp     incsp1
 ;
 	lda     _tmp
 	cmp     #$05
-	bcs     L1014
+	bcs     L101D
 ;
 ; index = upgrade_cost[player.abilities.selection * ABILITY_MAX_LEVEL + tmp];
 ;
@@ -6731,9 +6765,9 @@ L0ECB:	jmp     incsp1
 	jsr     mulax5
 	clc
 	adc     _tmp
-	bcc     L1297
+	bcc     L12A2
 	inx
-L1297:	sta     ptr1
+L12A2:	sta     ptr1
 	txa
 	clc
 	adc     #>(_upgrade_cost)
@@ -6753,7 +6787,7 @@ L1297:	sta     ptr1
 ;
 ; one_vram_buffer(CHR_BG_BLANK, NTADR_A(0x0F, 0x19));
 ;
-L1014:	lda     #$7F
+L101D:	lda     #$7F
 	jsr     pusha
 	ldx     #$23
 	lda     #$2F
@@ -6785,66 +6819,66 @@ L1014:	lda     #$7F
 ;
 ; }
 ;
-	beq     L0FFA
+	beq     L1003
 	cmp     #$01
-	beq     L0FF3
+	beq     L0FFC
 	cmp     #$02
-	beq     L0FEC
+	beq     L0FF5
 	cmp     #$03
-	beq     L1001
+	beq     L100A
 	cmp     #$04
-	beq     L1008
-	jmp     L0FEA
+	beq     L1011
+	jmp     L0FF3
 ;
 ; case ABILITY_CUT_SIZE: multi_vram_buffer_horz("CUT WIDTH ", 0x0A, adr); break;
 ;
-L0FEC:	jsr     decsp3
-	lda     #<(L0FEE)
+L0FF5:	jsr     decsp3
+	lda     #<(L0FF7)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0FEE)
-	jmp     L129E
+	lda     #>(L0FF7)
+	jmp     L12A9
 ;
 ; case ABILITY_CUT_POWER: multi_vram_buffer_horz("CUT POWER ", 0x0A, adr); break;
 ;
-L0FF3:	jsr     decsp3
-	lda     #<(L0FF5)
+L0FFC:	jsr     decsp3
+	lda     #<(L0FFE)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0FF5)
-	jmp     L129E
+	lda     #>(L0FFE)
+	jmp     L12A9
 ;
 ; case ABILITY_CUT_SPEED: multi_vram_buffer_horz("CUT SPEED ", 0x0A, adr); break;
 ;
-L0FFA:	jsr     decsp3
-	lda     #<(L0FFC)
+L1003:	jsr     decsp3
+	lda     #<(L1005)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0FFC)
-	jmp     L129E
+	lda     #>(L1005)
+	jmp     L12A9
 ;
 ; case ABILITY_MOVE_SPEED: multi_vram_buffer_horz("MOVE SPEED", 0x0A, adr); break;
 ;
-L1001:	jsr     decsp3
-	lda     #<(L1003)
+L100A:	jsr     decsp3
+	lda     #<(L100C)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L1003)
-	jmp     L129E
+	lda     #>(L100C)
+	jmp     L12A9
 ;
 ; case ABILITY_SPECIAL: multi_vram_buffer_horz("SPECIAL   ", 0x0A, adr); break;
 ;
-L1008:	jsr     decsp3
-	lda     #<(L100A)
+L1011:	jsr     decsp3
+	lda     #<(L1013)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L100A)
-L129E:	sta     (sp),y
+	lda     #>(L1013)
+L12A9:	sta     (sp),y
 	lda     #$0A
 	ldy     #$00
 	sta     (sp),y
@@ -6854,7 +6888,7 @@ L129E:	sta     (sp),y
 ;
 ; tmp = player.abilities.list[player.abilities.selection];
 ;
-L0FEA:	ldy     _player+16
+L0FF3:	ldy     _player+16
 	lda     _player+17,y
 	sta     _tmp
 ;
@@ -6944,17 +6978,17 @@ L0FEA:	ldy     _player+16
 ;
 	lda     #$00
 	sta     _x
-L129F:	lda     _x
+L12AA:	lda     _x
 	cmp     #$40
-	beq     L069D
+	beq     L069B
 	lda     #$00
 	jsr     _vram_put
 	inc     _x
-	jmp     L129F
+	jmp     L12AA
 ;
 ; ppu_on_all();
 ;
-L069D:	jsr     _ppu_on_all
+L069B:	jsr     _ppu_on_all
 ;
 ; delay(30);
 ;
@@ -7040,31 +7074,31 @@ L069D:	jsr     _ppu_on_all
 ;
 ; nmi_wait_and_prepare();
 ;
-L06CF:	jsr     _nmi_wait_and_prepare
+L06CD:	jsr     _nmi_wait_and_prepare
 ;
 ; if (state == 1) break;
 ;
 	lda     _state
 	cmp     #$01
-	jeq     L06D0
+	jeq     L06CE
 ;
 ; if (pad1_new & PAD_START) state = 1;
 ;
 	lda     _pad1_new
 	and     #$10
-	beq     L12A0
+	beq     L12AB
 	lda     #$01
 	sta     _state
 ;
 ; ++x;
 ;
-L12A0:	inc     _x
+L12AB:	inc     _x
 ;
 ; if (x == 0x05) {
 ;
 	lda     _x
 	cmp     #$05
-	bne     L06CF
+	bne     L06CD
 ;
 ; x = 0;
 ;
@@ -7091,9 +7125,9 @@ L12A0:	inc     _x
 	lda     _y
 	clc
 	adc     #$01
-	bcc     L06E9
+	bcc     L06E7
 	inx
-L06E9:	sta     ptr1
+L06E7:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7108,9 +7142,9 @@ L06E9:	sta     ptr1
 	lda     _y
 	clc
 	adc     #$02
-	bcc     L06ED
+	bcc     L06EB
 	inx
-L06ED:	sta     ptr1
+L06EB:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7123,9 +7157,9 @@ L06ED:	sta     ptr1
 	lda     _y
 	clc
 	adc     #$03
-	bcc     L06F0
+	bcc     L06EE
 	inx
-L06F0:	sta     ptr1
+L06EE:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7144,17 +7178,17 @@ L06F0:	sta     ptr1
 ; if (y == LOGO_TILE_COUNT * 4) break;
 ;
 	cmp     #$7C
-	jne     L06CF
+	jne     L06CD
 ;
 ; delay_with_state_skip(60);
 ;
-L06D0:	lda     #$3C
+L06CE:	lda     #$3C
 	jsr     _delay_with_state_skip
 ;
 ; if (state == 0) sfx_play(SND_GAME_LIGHTNING, 0);
 ;
 	lda     _state
-	bne     L06F7
+	bne     L06F5
 	lda     #$09
 	jsr     pusha
 	lda     #$00
@@ -7162,12 +7196,12 @@ L06D0:	lda     #$3C
 ;
 ; multi_vram_buffer_horz("ONE THOUSAND MAN", 0x10, NTADR_A(0x08, 0x0C));
 ;
-L06F7:	jsr     decsp3
-	lda     #<(L06FD)
+L06F5:	jsr     decsp3
+	lda     #<(L06FB)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L06FD)
+	lda     #>(L06FB)
 	sta     (sp),y
 	lda     #$10
 	ldy     #$00
@@ -7198,13 +7232,13 @@ L06F7:	jsr     decsp3
 ;
 	jsr     decsp3
 	lda     _game+9
-	bne     L05F6
-	lda     #<(L05F5)
-	ldx     #>(L05F5)
-	jmp     L05F9
-L05F6:	lda     #<(L05F8)
-	ldx     #>(L05F8)
-L05F9:	ldy     #$01
+	bne     L05F4
+	lda     #<(L05F3)
+	ldx     #>(L05F3)
+	jmp     L05F7
+L05F4:	lda     #<(L05F6)
+	ldx     #>(L05F6)
+L05F7:	ldy     #$01
 	sta     (sp),y
 	iny
 	txa
@@ -7220,13 +7254,13 @@ L05F9:	ldy     #$01
 ;
 	jsr     decsp3
 	lda     _game+1
-	bne     L0605
-	lda     #<(L0604)
-	ldx     #>(L0604)
-	jmp     L0608
-L0605:	lda     #<(L0607)
-	ldx     #>(L0607)
-L0608:	ldy     #$01
+	bne     L0603
+	lda     #<(L0602)
+	ldx     #>(L0602)
+	jmp     L0606
+L0603:	lda     #<(L0605)
+	ldx     #>(L0605)
+L0606:	ldy     #$01
 	sta     (sp),y
 	iny
 	txa
@@ -7244,21 +7278,21 @@ L0608:	ldy     #$01
 ;
 ; }
 ;
-	beq     L0615
+	beq     L0613
 	cmp     #$01
-	beq     L0621
+	beq     L061F
 	cmp     #$02
-	beq     L062D
+	beq     L062B
 	rts
 ;
 ; case 0: multi_vram_buffer_horz("EASY  ", 0x06, NTADR_A(0x14, 0x0F)); break;
 ;
-L0615:	jsr     decsp3
-	lda     #<(L0617)
+L0613:	jsr     decsp3
+	lda     #<(L0615)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0617)
+	lda     #>(L0615)
 	sta     (sp),y
 	lda     #$06
 	ldy     #$00
@@ -7269,12 +7303,12 @@ L0615:	jsr     decsp3
 ;
 ; case 1: multi_vram_buffer_horz("NORMAL", 0x06, NTADR_A(0x14, 0x0F)); break;
 ;
-L0621:	jsr     decsp3
-	lda     #<(L0623)
+L061F:	jsr     decsp3
+	lda     #<(L0621)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0623)
+	lda     #>(L0621)
 	sta     (sp),y
 	lda     #$06
 	ldy     #$00
@@ -7285,12 +7319,12 @@ L0621:	jsr     decsp3
 ;
 ; case 2: multi_vram_buffer_horz("HARD  ", 0x06, NTADR_A(0x14, 0x0F)); break;
 ;
-L062D:	jsr     decsp3
-	lda     #<(L062F)
+L062B:	jsr     decsp3
+	lda     #<(L062D)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L062F)
+	lda     #>(L062D)
 	sta     (sp),y
 	lda     #$06
 	ldy     #$00
@@ -7316,18 +7350,18 @@ L062D:	jsr     decsp3
 ;
 	lda     #$00
 	sta     _index
-L12A3:	lda     _index
+L12AE:	lda     _index
 	cmp     #$04
-	beq     L063A
+	beq     L0638
 ;
 ; multi_vram_buffer_horz("                    ", 0x14, NTADR_A(0x09, 0x0F + index + index));
 ;
 	jsr     decsp3
-	lda     #<(L0642)
+	lda     #<(L0640)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0642)
+	lda     #>(L0640)
 	sta     (sp),y
 	lda     #$14
 	ldy     #$00
@@ -7336,13 +7370,13 @@ L12A3:	lda     _index
 	lda     _index
 	clc
 	adc     #$0F
-	bcc     L12A2
+	bcc     L12AD
 	inx
 	clc
-L12A2:	adc     _index
-	bcc     L12A1
+L12AD:	adc     _index
+	bcc     L12AC
 	inx
-L12A1:	jsr     shlax4
+L12AC:	jsr     shlax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -7357,11 +7391,11 @@ L12A1:	jsr     shlax4
 ; for (index = 0; index != 4; ++index)
 ;
 	inc     _index
-	jmp     L12A3
+	jmp     L12AE
 ;
 ; nmi_wait_and_prepare();
 ;
-L063A:	jsr     _nmi_wait_and_prepare
+L0638:	jsr     _nmi_wait_and_prepare
 ;
 ; switch (game.state) {
 ;
@@ -7369,19 +7403,19 @@ L063A:	jsr     _nmi_wait_and_prepare
 ;
 ; }
 ;
-	beq     L0651
+	beq     L064F
 	cmp     #$04
-	beq     L0667
-	jmp     L12A4
+	beq     L0665
+	jmp     L12AF
 ;
 ; multi_vram_buffer_horz("START", 0x05, NTADR_A(0x0D, 0x0F));
 ;
-L0651:	jsr     decsp3
-	lda     #<(L0653)
+L064F:	jsr     decsp3
+	lda     #<(L0651)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0653)
+	lda     #>(L0651)
 	sta     (sp),y
 	lda     #$05
 	ldy     #$00
@@ -7393,11 +7427,11 @@ L0651:	jsr     decsp3
 ; multi_vram_buffer_horz("OPTIONS", 0x07, NTADR_A(0x0D, 0x11));
 ;
 	jsr     decsp3
-	lda     #<(L065D)
+	lda     #<(L065B)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L065D)
+	lda     #>(L065B)
 	sta     (sp),y
 	lda     #$07
 	ldy     #$00
@@ -7408,16 +7442,16 @@ L0651:	jsr     decsp3
 ;
 ; break;
 ;
-	jmp     L12A4
+	jmp     L12AF
 ;
 ; multi_vram_buffer_horz("LEVEL   ", 0x08, NTADR_A(0x09, 0x0F));
 ;
-L0667:	jsr     decsp3
-	lda     #<(L0669)
+L0665:	jsr     decsp3
+	lda     #<(L0667)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0669)
+	lda     #>(L0667)
 	sta     (sp),y
 	lda     #$08
 	ldy     #$00
@@ -7429,11 +7463,11 @@ L0667:	jsr     decsp3
 ; multi_vram_buffer_horz("ENDLESS ", 0x08, NTADR_A(0x09, 0x11));
 ;
 	jsr     decsp3
-	lda     #<(L0673)
+	lda     #<(L0671)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0673)
+	lda     #>(L0671)
 	sta     (sp),y
 	lda     #$08
 	ldy     #$00
@@ -7445,11 +7479,11 @@ L0667:	jsr     decsp3
 ; multi_vram_buffer_horz("FLASH   ", 0x08, NTADR_A(0x09, 0x13));
 ;
 	jsr     decsp3
-	lda     #<(L067D)
+	lda     #<(L067B)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L067D)
+	lda     #>(L067B)
 	sta     (sp),y
 	lda     #$08
 	ldy     #$00
@@ -7461,11 +7495,11 @@ L0667:	jsr     decsp3
 ; multi_vram_buffer_horz("RETURN  ", 0x08, NTADR_A(0x09, 0x15));
 ;
 	jsr     decsp3
-	lda     #<(L0687)
+	lda     #<(L0685)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0687)
+	lda     #>(L0685)
 	sta     (sp),y
 	lda     #$08
 	ldy     #$00
@@ -7480,7 +7514,7 @@ L0667:	jsr     decsp3
 ;
 ; index = 0;
 ;
-L12A4:	lda     #$00
+L12AF:	lda     #$00
 	sta     _index
 ;
 ; }
@@ -7504,104 +7538,104 @@ L12A4:	lda     #$00
 ;
 	lda     _marker
 	cmp     #$0A
-	jcs     L12BB
+	jcs     L12C6
 ;
 ; if (pad1_new & PAD_UP) {
 ;
 	lda     _pad1_new
 	and     #$08
-	beq     L12AB
+	beq     L12B6
 ;
 ; if (marker == 0 || marker == 1) ++marker; else marker = 0;
 ;
 	lda     _marker
-	beq     L12A8
+	beq     L12B3
 	cmp     #$01
-	beq     L12A8
+	beq     L12B3
 	lda     #$00
-	jmp     L12AA
-L12A8:	inc     _marker
-	jmp     L12AB
-L12AA:	sta     _marker
+	jmp     L12B5
+L12B3:	inc     _marker
+	jmp     L12B6
+L12B5:	sta     _marker
 ;
 ; if (pad1_new & PAD_DOWN) {
 ;
-L12AB:	lda     _pad1_new
+L12B6:	lda     _pad1_new
 	and     #$04
-	beq     L12AF
+	beq     L12BA
 ;
 ; if (marker == 2 || marker == 3) ++marker; else marker = 0;
 ;
 	lda     _marker
 	cmp     #$02
-	beq     L12AC
+	beq     L12B7
 	cmp     #$03
-	beq     L12AC
+	beq     L12B7
 	lda     #$00
-	jmp     L12AE
-L12AC:	inc     _marker
-	jmp     L12AF
-L12AE:	sta     _marker
+	jmp     L12B9
+L12B7:	inc     _marker
+	jmp     L12BA
+L12B9:	sta     _marker
 ;
 ; if (pad1_new & PAD_LEFT) {
 ;
-L12AF:	lda     _pad1_new
+L12BA:	lda     _pad1_new
 	and     #$02
-	beq     L12B3
+	beq     L12BE
 ;
 ; if (marker == 4 || marker == 6) ++marker; else marker = 0;
 ;
 	lda     _marker
 	cmp     #$04
-	beq     L12B0
+	beq     L12BB
 	cmp     #$06
-	beq     L12B0
+	beq     L12BB
 	lda     #$00
-	jmp     L12B2
-L12B0:	inc     _marker
-	jmp     L12B3
-L12B2:	sta     _marker
+	jmp     L12BD
+L12BB:	inc     _marker
+	jmp     L12BE
+L12BD:	sta     _marker
 ;
 ; if (pad1_new & PAD_RIGHT) {
 ;
-L12B3:	lda     _pad1_new
+L12BE:	lda     _pad1_new
 	and     #$01
-	beq     L12B7
+	beq     L12C2
 ;
 ; if (marker == 5 || marker == 7) ++marker; else marker = 0;
 ;
 	lda     _marker
 	cmp     #$05
-	beq     L12B4
+	beq     L12BF
 	cmp     #$07
-	beq     L12B4
+	beq     L12BF
 	lda     #$00
-	jmp     L12B6
-L12B4:	inc     _marker
-	jmp     L12B7
-L12B6:	sta     _marker
+	jmp     L12C1
+L12BF:	inc     _marker
+	jmp     L12C2
+L12C1:	sta     _marker
 ;
 ; if (pad1_new & PAD_B) {
 ;
-L12B7:	lda     _pad1_new
+L12C2:	lda     _pad1_new
 	and     #$40
-	beq     L12B9
+	beq     L12C4
 ;
 ; if (marker == 8) ++marker; else marker = 0;
 ;
 	lda     _marker
 	cmp     #$08
-	bne     L12B8
+	bne     L12C3
 	inc     _marker
-	jmp     L12B9
-L12B8:	lda     #$00
+	jmp     L12C4
+L12C3:	lda     #$00
 	sta     _marker
 ;
 ; if (pad1_new & PAD_A) {
 ;
-L12B9:	lda     _pad1_new
+L12C4:	lda     _pad1_new
 	and     #$80
-	bne     L12CD
+	bne     L12D8
 ;
 ; }
 ;
@@ -7609,9 +7643,9 @@ L12B9:	lda     _pad1_new
 ;
 ; if (marker == 9) {
 ;
-L12CD:	lda     _marker
+L12D8:	lda     _marker
 	cmp     #$09
-	bne     L12BA
+	bne     L12C5
 ;
 ; ++marker;
 ;
@@ -7627,11 +7661,11 @@ L12CD:	lda     _marker
 ; multi_vram_buffer_horz("KONAMI CODE NOT FOUND", 0x15, NTADR_A(0x06, 0x17));
 ;
 	jsr     decsp3
-	lda     #<(L0740)
+	lda     #<(L073E)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0740)
+	lda     #>(L073E)
 	sta     (sp),y
 	lda     #$15
 	ldy     #$00
@@ -7642,15 +7676,15 @@ L12CD:	lda     _marker
 ;
 ; marker = 0;
 ;
-L12BA:	lda     #$00
+L12C5:	lda     #$00
 	sta     _marker
 ;
 ; } else if (marker < 249) {
 ;
 	rts
-L12BB:	lda     _marker
+L12C6:	lda     _marker
 	cmp     #$F9
-	bcc     L12CE
+	bcc     L12D9
 ;
 ; }
 ;
@@ -7658,7 +7692,7 @@ L12BB:	lda     _marker
 ;
 ; ++marker;
 ;
-L12CE:	inc     _marker
+L12D9:	inc     _marker
 ;
 ; if ((marker - 10) % 20 == 0) {
 ;
@@ -7666,21 +7700,21 @@ L12CE:	inc     _marker
 	lda     _marker
 	sec
 	sbc     #$0A
-	bcs     L0753
+	bcs     L0751
 	dex
-L0753:	jsr     pushax
+L0751:	jsr     pushax
 	lda     #$14
 	jsr     tosumoda0
 	cpx     #$00
-	bne     L0762
+	bne     L0760
 	cmp     #$00
-	bne     L0762
+	bne     L0760
 ;
 ; if (marker > 130) {
 ;
 	lda     _marker
 	cmp     #$83
-	bcc     L0755
+	bcc     L0753
 ;
 ; one_vram_buffer(CHR_DOT, NTADR_A(0x08 + (marker - 120) / 10, 0x19));
 ;
@@ -7689,27 +7723,27 @@ L0753:	jsr     pushax
 	lda     _marker
 	sec
 	sbc     #$78
-	bcs     L0760
+	bcs     L075E
 	dex
-L0760:	jsr     pushax
+L075E:	jsr     pushax
 ;
 ; } else {
 ;
-	jmp     L12CC
+	jmp     L12D7
 ;
 ; one_vram_buffer(CHR_DOT, NTADR_A(0x08 + marker / 10, 0x19));
 ;
-L0755:	lda     #$3B
+L0753:	lda     #$3B
 	jsr     pusha
 	lda     _marker
 	jsr     pusha0
-L12CC:	lda     #$0A
+L12D7:	lda     #$0A
 	jsr     tosudiva0
 	clc
 	adc     #$08
-	bcc     L076B
+	bcc     L0769
 	inx
-L076B:	ora     #$20
+L0769:	ora     #$20
 	pha
 	txa
 	ora     #$03
@@ -7724,18 +7758,18 @@ L076B:	ora     #$20
 ;
 ; if (marker == 140) {
 ;
-L0762:	lda     _marker
+L0760:	lda     _marker
 	cmp     #$8C
-	bne     L12BC
+	bne     L12C7
 ;
 ; multi_vram_buffer_horz("SEARCHING FOR ALTERNATIVES", 0x1A, NTADR_A(0x03, 0x17));
 ;
 	jsr     decsp3
-	lda     #<(L076F)
+	lda     #<(L076D)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L076F)
+	lda     #>(L076D)
 	sta     (sp),y
 	lda     #$1A
 	ldy     #$00
@@ -7747,11 +7781,11 @@ L0762:	lda     _marker
 ; multi_vram_buffer_horz("                 ", 0x11, NTADR_A(0x0A, 0x19));
 ;
 	jsr     decsp3
-	lda     #<(L0779)
+	lda     #<(L0777)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0779)
+	lda     #>(L0777)
 	sta     (sp),y
 	lda     #$11
 	ldy     #$00
@@ -7762,18 +7796,18 @@ L0762:	lda     _marker
 ;
 ; if (marker == 249) {
 ;
-L12BC:	lda     _marker
+L12C7:	lda     _marker
 	cmp     #$F9
-	bne     L0782
+	bne     L0780
 ;
 ; multi_vram_buffer_horz("   KOSARI CODE ACTIVATED  ", 0x1A, NTADR_A(0x03, 0x17));
 ;
 	jsr     decsp3
-	lda     #<(L0785)
+	lda     #<(L0783)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L0785)
+	lda     #>(L0783)
 	sta     (sp),y
 	lda     #$1A
 	ldy     #$00
@@ -7785,11 +7819,11 @@ L12BC:	lda     _marker
 ; multi_vram_buffer_horz("                 ", 0x11, NTADR_A(0x0B, 0x19));
 ;
 	jsr     decsp3
-	lda     #<(L078F)
+	lda     #<(L078D)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L078F)
+	lda     #>(L078D)
 	sta     (sp),y
 	lda     #$11
 	ldy     #$00
@@ -7812,7 +7846,7 @@ L12BC:	lda     _marker
 ;
 ; }
 ;
-L0782:	rts
+L0780:	rts
 
 .endproc
 
@@ -7853,7 +7887,7 @@ L0782:	rts
 ;
 ; nmi_wait_and_prepare();
 ;
-L0525:	jsr     _nmi_wait_and_prepare
+L0523:	jsr     _nmi_wait_and_prepare
 ;
 ; oam_clear();
 ;
@@ -7862,9 +7896,9 @@ L0525:	jsr     _nmi_wait_and_prepare
 ; for(tmp = 0x00; tmp != LOGO_TILE_COUNT * 4; tmp += 4) {
 ;
 	lda     #$00
-L12D0:	sta     _tmp
+L12DB:	sta     _tmp
 	cmp     #$7C
-	beq     L12D4
+	beq     L12DF
 ;
 ; oam_spr(LOGO[tmp] + LOGO_X_OFFSET, LOGO[tmp + 1] + LOGO_Y_OFFSET, LOGO[tmp + 2], LOGO[tmp + 3]);
 ;
@@ -7879,9 +7913,9 @@ L12D0:	sta     _tmp
 	lda     _tmp
 	clc
 	adc     #$01
-	bcc     L053B
+	bcc     L0539
 	inx
-L053B:	sta     ptr1
+L0539:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7896,9 +7930,9 @@ L053B:	sta     ptr1
 	lda     _tmp
 	clc
 	adc     #$02
-	bcc     L053F
+	bcc     L053D
 	inx
-L053F:	sta     ptr1
+L053D:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7911,9 +7945,9 @@ L053F:	sta     ptr1
 	lda     _tmp
 	clc
 	adc     #$03
-	bcc     L0542
+	bcc     L0540
 	inx
-L0542:	sta     ptr1
+L0540:	sta     ptr1
 	txa
 	clc
 	adc     #>(_LOGO)
@@ -7927,17 +7961,17 @@ L0542:	sta     ptr1
 	lda     #$04
 	clc
 	adc     _tmp
-	jmp     L12D0
+	jmp     L12DB
 ;
 ; ++x;
 ;
-L12D4:	inc     _x
+L12DF:	inc     _x
 ;
 ; if (x == 0x06) { 
 ;
 	lda     _x
 	cmp     #$06
-	bne     L12D6
+	bne     L12E1
 ;
 ; x = 0;
 ;
@@ -7947,7 +7981,7 @@ L12D4:	inc     _x
 ; if (state == 0) {
 ;
 	lda     _state
-	bne     L12D5
+	bne     L12E0
 ;
 ; ++y;
 ;
@@ -7957,36 +7991,36 @@ L12D4:	inc     _x
 ;
 	lda     _y
 	cmp     #$18
-	bne     L12D6
+	bne     L12E1
 	lda     #$01
 ;
 ; } else {
 ;
-	jmp     L12D1
+	jmp     L12DC
 ;
 ; --y;
 ;
-L12D5:	dec     _y
+L12E0:	dec     _y
 ;
 ; if (y == 0x15) state = 0;
 ;
 	lda     _y
 	cmp     #$15
-	bne     L12D6
+	bne     L12E1
 	lda     #$00
-L12D1:	sta     _state
+L12DC:	sta     _state
 ;
 ; if (state == 0) oam_spr(game.state == GAME_ST_MENU ? 0x5E : 0x3C, 0x77 + (menu_position * 0x10), y, 0b00000001);
 ;
-L12D6:	lda     _state
-	bne     L0555
+L12E1:	lda     _state
+	bne     L0553
 	jsr     decsp3
 	lda     _game+3
-	bne     L12D7
+	bne     L12E2
 	lda     #$5E
-	jmp     L12D8
-L12D7:	lda     #$3C
-L12D8:	ldy     #$02
+	jmp     L12E3
+L12E2:	lda     #$3C
+L12E3:	ldy     #$02
 	sta     (sp),y
 	lda     _index
 	asl     a
@@ -8004,14 +8038,14 @@ L12D8:	ldy     #$02
 ;
 ; else oam_spr(game.state == GAME_ST_MENU ? 0x5E : 0x3C, 0x76 + (menu_position * 0x10), y, 0b10000001);
 ;
-	jmp     L12D2
-L0555:	jsr     decsp3
+	jmp     L12DD
+L0553:	jsr     decsp3
 	lda     _game+3
-	bne     L12D9
+	bne     L12E4
 	lda     #$5E
-	jmp     L12DA
-L12D9:	lda     #$3C
-L12DA:	ldy     #$02
+	jmp     L12E5
+L12E4:	lda     #$3C
+L12E5:	ldy     #$02
 	sta     (sp),y
 	lda     _index
 	asl     a
@@ -8026,70 +8060,70 @@ L12DA:	ldy     #$02
 	dey
 	sta     (sp),y
 	lda     #$81
-L12D2:	jsr     _oam_spr
+L12DD:	jsr     _oam_spr
 ;
 ; if (game.state == GAME_ST_MENU) title_check_cheat_code();
 ;
 	lda     _game+3
-	bne     L12DB
+	bne     L12E6
 	jsr     _title_check_cheat_code
 ;
 ; if (pad1_new & PAD_DOWN || pad1_new & PAD_UP) {
 ;
-L12DB:	lda     _pad1_new
+L12E6:	lda     _pad1_new
 	and     #$04
-	bne     L12DC
+	bne     L12E7
 	lda     _pad1_new
 	and     #$08
-	beq     L12E5
+	beq     L12F0
 ;
 ; sfx_play(SND_MENU_MOVE, 0);
 ;
-L12DC:	lda     #$00
+L12E7:	lda     #$00
 	jsr     pusha
 	jsr     _sfx_play
 ;
 ; menu_items = game.state == GAME_ST_MENU ? 1 : 3;
 ;
 	lda     _game+3
-	bne     L12DD
+	bne     L12E8
 	lda     #$01
-	jmp     L12DE
-L12DD:	lda     #$03
-L12DE:	sta     _tmp
+	jmp     L12E9
+L12E8:	lda     #$03
+L12E9:	sta     _tmp
 ;
 ; if (pad1_new & PAD_DOWN) menu_position = menu_position == menu_items ? 0 : ++menu_position;
 ;
 	lda     _pad1_new
 	and     #$04
-	beq     L12E1
+	beq     L12EC
 	lda     _tmp
 	cmp     _index
-	bne     L12DF
+	bne     L12EA
 	lda     #$00
-	jmp     L12E0
-L12DF:	inc     _index
+	jmp     L12EB
+L12EA:	inc     _index
 	lda     _index
-L12E0:	sta     _index
+L12EB:	sta     _index
 ;
 ; if (pad1_new & PAD_UP) menu_position = menu_position == 0 ? menu_items : --menu_position;
 ;
-L12E1:	lda     _pad1_new
+L12EC:	lda     _pad1_new
 	and     #$08
-	beq     L12E5
+	beq     L12F0
 	lda     _index
-	bne     L12E2
+	bne     L12ED
 	lda     _tmp
-	jmp     L12E4
-L12E2:	dec     _index
+	jmp     L12EF
+L12ED:	dec     _index
 	lda     _index
-L12E4:	sta     _index
+L12EF:	sta     _index
 ;
 ; if (pad1_new & PAD_START) {
 ;
-L12E5:	lda     _pad1_new
+L12F0:	lda     _pad1_new
 	and     #$10
-	jeq     L0525
+	jeq     L0523
 ;
 ; switch (game.state) {
 ;
@@ -8097,25 +8131,25 @@ L12E5:	lda     _pad1_new
 ;
 ; }
 ;
-	beq     L12E6
+	beq     L12F1
 	cmp     #$04
-	jeq     L12EC
-	jmp     L0525
+	jeq     L12F7
+	jmp     L0523
 ;
 ; switch (menu_position) {
 ;
-L12E6:	lda     _index
+L12F1:	lda     _index
 ;
 ; }
 ;
-	beq     L12E8
+	beq     L12F3
 	cmp     #$01
-	beq     L12EB
-	jmp     L12EC
+	beq     L12F6
+	jmp     L12F7
 ;
 ; x = y = state = 0;
 ;
-L12E8:	sta     _state
+L12F3:	sta     _state
 	sta     _y
 	sta     _x
 ;
@@ -8132,7 +8166,7 @@ L12E8:	sta     _state
 ;
 ; ppu_wait_nmi();
 ;
-L05A1:	jsr     _ppu_wait_nmi
+L059F:	jsr     _ppu_wait_nmi
 ;
 ; clear_vram_buffer();
 ;
@@ -8146,19 +8180,19 @@ L05A1:	jsr     _ppu_wait_nmi
 ;
 	lda     _x
 	cmp     #$03
-	bne     L05A1
+	bne     L059F
 ;
 ; multi_vram_buffer_horz(state == 0 ? "START" : "     ", 0x05, NTADR_A(0x0D,0x0F));
 ;
 	jsr     decsp3
 	lda     _state
-	bne     L05AD
-	lda     #<(L05AC)
-	ldx     #>(L05AC)
-	jmp     L05B0
-L05AD:	lda     #<(L05AF)
-	ldx     #>(L05AF)
-L05B0:	ldy     #$01
+	bne     L05AB
+	lda     #<(L05AA)
+	ldx     #>(L05AA)
+	jmp     L05AE
+L05AB:	lda     #<(L05AD)
+	ldx     #>(L05AD)
+L05AE:	ldy     #$01
 	sta     (sp),y
 	iny
 	txa
@@ -8173,11 +8207,11 @@ L05B0:	ldy     #$01
 ; state = state == 0 ? 1 : 0;
 ;
 	lda     _state
-	bne     L12E9
+	bne     L12F4
 	lda     #$01
-	jmp     L12EA
-L12E9:	lda     #$00
-L12EA:	sta     _state
+	jmp     L12F5
+L12F4:	lda     #$00
+L12F5:	sta     _state
 ;
 ; x = 0;
 ;
@@ -8192,12 +8226,12 @@ L12EA:	sta     _state
 ;
 	lda     _y
 	cmp     #$12
-	bne     L05A1
+	bne     L059F
 	rts
 ;
 ; game.state = GAME_ST_OPTIONS;
 ;
-L12EB:	lda     #$04
+L12F6:	lda     #$04
 	sta     _game+3
 ;
 ; menu_position = 0;
@@ -8211,29 +8245,29 @@ L12EB:	lda     #$04
 ;
 ; switch (menu_position) {
 ;
-L12EC:	lda     _index
+L12F7:	lda     _index
 ;
 ; }
 ;
-	beq     L12ED
+	beq     L12F8
 	cmp     #$01
-	beq     L12F0
+	beq     L12FB
 	cmp     #$02
-	beq     L12F3
+	beq     L12FE
 	cmp     #$03
-	beq     L12F6
-	jmp     L0525
+	beq     L1301
+	jmp     L0523
 ;
 ; game.difficulty = game.difficulty == 2 ? 0 : ++game.difficulty;
 ;
-L12ED:	lda     _game+6
+L12F8:	lda     _game+6
 	cmp     #$02
-	bne     L12EE
+	bne     L12F9
 	lda     #$00
-	jmp     L12EF
-L12EE:	inc     _game+6
+	jmp     L12FA
+L12F9:	inc     _game+6
 	lda     _game+6
-L12EF:	sta     _game+6
+L12FA:	sta     _game+6
 ;
 ; title_draw_options();
 ;
@@ -8241,17 +8275,17 @@ L12EF:	sta     _game+6
 ;
 ; break;
 ;
-	jmp     L0525
+	jmp     L0523
 ;
 ; game.last_level = game.last_level == GAME_MAX_LEVEL ? 0 : GAME_MAX_LEVEL; 
 ;
-L12F0:	lda     _game+1
+L12FB:	lda     _game+1
 	cmp     #$0C
-	bne     L12F1
+	bne     L12FC
 	lda     #$00
-	jmp     L12F2
-L12F1:	lda     #$0C
-L12F2:	sta     _game+1
+	jmp     L12FD
+L12FC:	lda     #$0C
+L12FD:	sta     _game+1
 ;
 ; title_draw_options();
 ;
@@ -8259,16 +8293,16 @@ L12F2:	sta     _game+1
 ;
 ; break; 
 ;
-	jmp     L0525
+	jmp     L0523
 ;
 ; game.effects.lightning_enabled = game.effects.lightning_enabled == 0 ? 1 : 0; 
 ;
-L12F3:	lda     _game+9
-	bne     L12F4
+L12FE:	lda     _game+9
+	bne     L12FF
 	lda     #$01
-	jmp     L12F5
-L12F4:	lda     #$00
-L12F5:	sta     _game+9
+	jmp     L1300
+L12FF:	lda     #$00
+L1300:	sta     _game+9
 ;
 ; title_draw_options();
 ;
@@ -8276,11 +8310,11 @@ L12F5:	sta     _game+9
 ;
 ; break;
 ;
-	jmp     L0525
+	jmp     L0523
 ;
 ; game.state = GAME_ST_MENU;
 ;
-L12F6:	lda     #$00
+L1301:	lda     #$00
 	sta     _game+3
 ;
 ; menu_position = 0;
@@ -8293,7 +8327,7 @@ L12F6:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0525
+	jmp     L0523
 
 .endproc
 
@@ -8318,7 +8352,7 @@ L12F6:	lda     #$00
 ;
 ; nmi_wait_and_prepare();
 ;
-L0E2A:	jsr     _nmi_wait_and_prepare
+L0E33:	jsr     _nmi_wait_and_prepare
 ;
 ; upgrade_draw_sprites();
 ;
@@ -8332,7 +8366,7 @@ L0E2A:	jsr     _nmi_wait_and_prepare
 ;
 	lda     _state
 	cmp     #$01
-	bne     L0E2A
+	bne     L0E33
 	rts
 
 .endproc
@@ -8350,7 +8384,7 @@ L0E2A:	jsr     _nmi_wait_and_prepare
 ;
 ; game_process_next_level();
 ;
-L07D4:	jsr     _game_process_next_level
+L07E7:	jsr     _game_process_next_level
 ;
 ; game_draw_background();
 ;
@@ -8366,12 +8400,12 @@ L07D4:	jsr     _game_process_next_level
 ;
 ; nmi_wait_and_prepare();
 ;
-L07DC:	jsr     _nmi_wait_and_prepare
+L07EF:	jsr     _nmi_wait_and_prepare
 ;
 ; if (game.paused == GAME_UNPAUSED) {
 ;
 	lda     _game+2
-	jne     L12FF
+	jne     L130A
 ;
 ; game_small_scythe_processing();
 ;
@@ -8397,7 +8431,7 @@ L07DC:	jsr     _nmi_wait_and_prepare
 ;
 	lda     _game+3
 	cmp     #$04
-	bne     L12F9
+	bne     L1304
 ;
 ; game_grass_overgrow();
 ;
@@ -8407,14 +8441,14 @@ L07DC:	jsr     _nmi_wait_and_prepare
 ;
 	lda     _game+3
 	cmp     #$05
-	bne     L07DC
-	jmp     L07DD
+	bne     L07EF
+	jmp     L07F0
 ;
 ; if (game.state == GAME_ST_LEVEL_WIN) {
 ;
-L12F9:	lda     _game+3
+L1304:	lda     _game+3
 	cmp     #$02
-	bne     L07EE
+	bne     L0801
 ;
 ; game_grass_fading();
 ;
@@ -8424,12 +8458,12 @@ L12F9:	lda     _game+3
 ;
 	lda     _game+3
 	cmp     #$03
-	bne     L07DC
-	jmp     L07DD
+	bne     L07EF
+	jmp     L07F0
 ;
 ; game_movement_and_actions();
 ;
-L07EE:	jsr     _game_movement_and_actions
+L0801:	jsr     _game_movement_and_actions
 ;
 ; game_grass_grow();
 ;
@@ -8443,7 +8477,7 @@ L07EE:	jsr     _game_movement_and_actions
 ;
 	lda     _frame_tick
 	cmp     #$3C
-	jne     L12FE
+	jne     L1309
 ;
 ; frame_tick = 0;
 ;
@@ -8457,7 +8491,7 @@ L07EE:	jsr     _game_movement_and_actions
 ; if (game.play_time == 0) {
 ;
 	lda     _game+4
-	bne     L12FA
+	bne     L1305
 ;
 ; sfx_play(SND_GAME_WIN, 0);
 ;
@@ -8479,147 +8513,147 @@ L07EE:	jsr     _game_movement_and_actions
 ;
 ; } else {
 ;
-	jmp     L0815
+	jmp     L0828
 ;
 ; if ((game.max_play_time - game.play_time) % 0x0A == 0) game.effects.lightning = 1;
 ;
-L12FA:	lda     _game+5
+L1305:	lda     _game+5
 	sec
 	sbc     _game+4
 	jsr     pusha0
 	lda     #$0A
 	jsr     tosumoda0
 	cpx     #$00
-	bne     L0806
+	bne     L0819
 	cmp     #$00
-	bne     L0806
+	bne     L0819
 	lda     #$01
 	sta     _game+8
 ;
 ; if ((game.max_play_time - game.play_time) % 0x0E == 0) game.effects.wind = 1;
 ;
-L0806:	lda     _game+5
+L0819:	lda     _game+5
 	sec
 	sbc     _game+4
 	jsr     pusha0
 	lda     #$0E
 	jsr     tosumoda0
 	cpx     #$00
-	bne     L080C
+	bne     L081F
 	cmp     #$00
-	bne     L080C
+	bne     L081F
 	lda     #$01
 	sta     _game+10
 ;
 ; tmp = 1;
 ;
-L080C:	lda     #$01
+L081F:	lda     #$01
 	sta     _tmp
 ;
 ; for (x = 0; x < BIRDS_COUNT; ++x) {
 ;
 	lda     #$00
 	sta     _x
-L12FB:	lda     _x
+L1306:	lda     _x
 	cmp     #$04
-	bcs     L0815
+	bcs     L0828
 ;
 ; if (bird_state[x] == 0) {
 ;
 	ldy     _x
 	lda     _bird_state,y
-	bne     L12FD
+	bne     L1308
 ;
 ; if (game.level > 8) tmp = rand8() % 0x01;
 ;
 	lda     _game
 	cmp     #$09
-	bcc     L12FC
+	bcc     L1307
 	jsr     _rand8
 	lda     #$00
 ;
-; else if(game.level > 5) tmp = rand8() % 0x02;
+; else if (game.level > 5) tmp = rand8() % 0x02;
 ;
-	jmp     L12F8
-L12FC:	lda     _game
+	jmp     L1303
+L1307:	lda     _game
 	cmp     #$06
-	bcc     L0825
+	bcc     L0838
 	jsr     _rand8
 	and     #$01
 ;
 ; else tmp = rand8() % 0x03;
 ;
-	jmp     L12F8
-L0825:	jsr     _rand8
+	jmp     L1303
+L0838:	jsr     _rand8
 	jsr     pushax
 	lda     #$03
 	jsr     tosumoda0
-L12F8:	sta     _tmp
+L1303:	sta     _tmp
 ;
 ; if (tmp == 0) game_create_enemy(x);
 ;
 	lda     _tmp
-	bne     L0815
+	bne     L0828
 	lda     _x
 	jsr     _game_create_enemy
 ;
 ; break;
 ;
-	jmp     L0815
+	jmp     L0828
 ;
 ; for (x = 0; x < BIRDS_COUNT; ++x) {
 ;
-L12FD:	inc     _x
-	jmp     L12FB
+L1308:	inc     _x
+	jmp     L1306
 ;
 ; game_draw_time();
 ;
-L0815:	jsr     _game_draw_time
+L0828:	jsr     _game_draw_time
 ;
 ; if (pad1_new & PAD_START) game.paused = GAME_PAUSED;
 ;
-L12FE:	lda     _pad1_new
+L1309:	lda     _pad1_new
 	and     #$10
-	jeq     L07DC
+	jeq     L07EF
 	lda     #$01
 	sta     _game+2
 ;
 ; } else {
 ;
-	jmp     L07DC
+	jmp     L07EF
 ;
 ; if (pad1_new & PAD_START) game.paused = GAME_UNPAUSED;
 ;
-L12FF:	lda     _pad1_new
+L130A:	lda     _pad1_new
 	and     #$10
-	jeq     L07DC
+	jeq     L07EF
 	lda     #$00
 	sta     _game+2
 ;
 ; while(1) {
 ;
-	jmp     L07DC
+	jmp     L07EF
 ;
 ; clear_vram_buffer();
 ;
-L07DD:	jsr     _clear_vram_buffer
+L07F0:	jsr     _clear_vram_buffer
 ;
 ; if (game.lives == 0x00 || game.level == game.last_level) break;
 ;
 	lda     _game+7
-	beq     L1300
+	beq     L130B
 	lda     _game+1
 	cmp     _game
-	bne     L083B
-L1300:	rts
+	bne     L084E
+L130B:	rts
 ;
 ; else process_upgrades();
 ;
-L083B:	jsr     _process_upgrades
+L084E:	jsr     _process_upgrades
 ;
 ; while(1) {
 ;
-	jmp     L07D4
+	jmp     L07E7
 
 .endproc
 
@@ -8646,21 +8680,21 @@ L083B:	jsr     _process_upgrades
 ; if (tmp == 0) {
 ;
 	lda     _tmp
-	jne     L1304
+	jne     L130F
 ;
 ; if (index == 0) {
 ;
 	lda     _index
-	bne     L1301
+	bne     L130C
 ;
 ; multi_vram_buffer_horz("                                ", 0x20, NTADR_A(0, ypos));
 ;
 	jsr     decsp3
-	lda     #<(L1032)
+	lda     #<(L103B)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L1032)
+	lda     #>(L103B)
 	sta     (sp),y
 	lda     #$20
 	ldy     #$00
@@ -8683,15 +8717,15 @@ L083B:	jsr     _process_upgrades
 ;
 	ldy     #$01
 	lda     (sp),y
-	beq     L1301
+	beq     L130C
 ;
 ; multi_vram_buffer_horz("                                ", 0x20, NTADR_A(0, extra_blank));
 ;
 	jsr     decsp3
-	lda     #<(L103E)
+	lda     #<(L1047)
 	sta     (sp),y
 	iny
-	lda     #>(L103E)
+	lda     #>(L1047)
 	sta     (sp),y
 	lda     #$20
 	ldy     #$00
@@ -8712,9 +8746,9 @@ L083B:	jsr     _process_upgrades
 ;
 ; if (state == EG_PRINT_DELAY) {
 ;
-L1301:	lda     _state
+L130C:	lda     _state
 	cmp     #$05
-	jne     L1303
+	jne     L130E
 ;
 ; state = 0;
 ;
@@ -8724,9 +8758,9 @@ L1301:	lda     _state
 ; for (y = 0; y < index; ++y) {
 ;
 	sta     _y
-L1302:	lda     _y
+L130D:	lda     _y
 	cmp     _index
-	bcs     L104C
+	bcs     L1055
 ;
 ; *str++;
 ;
@@ -8737,9 +8771,9 @@ L1302:	lda     _y
 	lda     (sp),y
 	clc
 	adc     #$01
-	bcc     L1054
+	bcc     L105D
 	inx
-L1054:	jsr     staxysp
+L105D:	jsr     staxysp
 ;
 ; ++xpos;
 ;
@@ -8752,11 +8786,11 @@ L1054:	jsr     staxysp
 ; for (y = 0; y < index; ++y) {
 ;
 	inc     _y
-	jmp     L1302
+	jmp     L130D
 ;
 ; if (!*str) {
 ;
-L104C:	ldy     #$03
+L1055:	ldy     #$03
 	lda     (sp),y
 	sta     ptr1+1
 	dey
@@ -8764,7 +8798,7 @@ L104C:	ldy     #$03
 	sta     ptr1
 	ldy     #$00
 	lda     (ptr1),y
-	bne     L1056
+	bne     L105F
 ;
 ; ++marker;
 ;
@@ -8785,7 +8819,7 @@ L104C:	ldy     #$03
 ;
 ; ++index;
 ;
-L1056:	inc     _index
+L105F:	inc     _index
 ;
 ; one_vram_buffer(*str, NTADR_A(xpos, ypos));
 ;
@@ -8822,7 +8856,7 @@ L1056:	inc     _index
 ;
 ; ++state;
 ;
-L1303:	inc     _state
+L130E:	inc     _state
 ;
 ; } else {
 ;
@@ -8830,7 +8864,7 @@ L1303:	inc     _state
 ;
 ; --tmp;
 ;
-L1304:	dec     _tmp
+L130F:	dec     _tmp
 ;
 ; }
 ;
@@ -8867,17 +8901,17 @@ L1304:	dec     _tmp
 ;
 	lda     #$00
 	sta     _x
-L1306:	lda     _x
+L1311:	lda     _x
 	cmp     #$20
-	beq     L1071
+	beq     L107A
 	lda     #$7F
 	jsr     _vram_put
 	inc     _x
-	jmp     L1306
+	jmp     L1311
 ;
 ; ppu_on_all();
 ;
-L1071:	jsr     _ppu_on_all
+L107A:	jsr     _ppu_on_all
 ;
 ; music_play(MSC_GAME_WIN);
 ;
@@ -8923,7 +8957,7 @@ L1071:	jsr     _ppu_on_all
 ;
 ; nmi_wait_and_prepare();
 ;
-L108C:	jsr     _nmi_wait_and_prepare
+L1095:	jsr     _nmi_wait_and_prepare
 ;
 ; oam_clear();
 ;
@@ -8940,13 +8974,13 @@ L108C:	jsr     _nmi_wait_and_prepare
 	sta     (sp),y
 	lda     _x
 	cmp     #$01
-	bne     L1096
+	bne     L109F
 	lda     #<(_OTM_R)
 	ldx     #>(_OTM_R)
-	jmp     L1098
-L1096:	lda     #<(_OTM_L)
+	jmp     L10A1
+L109F:	lda     #<(_OTM_L)
 	ldx     #>(_OTM_L)
-L1098:	jsr     _oam_meta_spr
+L10A1:	jsr     _oam_meta_spr
 ;
 ; player.x += x;
 ;
@@ -8958,40 +8992,40 @@ L1098:	jsr     _oam_meta_spr
 ; if (player.x > 180) x = -1;
 ;
 	cmp     #$B5
-	bcc     L1307
+	bcc     L1312
 	lda     #$FF
 	sta     _x
 ;
 ; if (player.x < 50) x = 1;
 ;
-L1307:	lda     _player
+L1312:	lda     _player
 	cmp     #$32
-	bcs     L1308
+	bcs     L1313
 	lda     #$01
 	sta     _x
 ;
 ; if (marker < 0x0A) {
 ;
-L1308:	lda     _marker
+L1313:	lda     _marker
 	cmp     #$0A
-	jcs     L130C
+	jcs     L1317
 ;
 ; if (tmp < 5 && marker == 0) {
 ;
 	lda     _tmp
 	cmp     #$05
-	bcs     L130B
+	bcs     L1316
 	lda     _marker
-	bne     L130B
+	bne     L1316
 ;
 ; multi_vram_buffer_horz("                                ", 0x20, NTADR_A(0, 0x09 + tmp));
 ;
 	jsr     decsp3
-	lda     #<(L10AB)
+	lda     #<(L10B4)
 	ldy     #$01
 	sta     (sp),y
 	iny
-	lda     #>(L10AB)
+	lda     #>(L10B4)
 	sta     (sp),y
 	lda     #$20
 	ldy     #$00
@@ -9000,9 +9034,9 @@ L1308:	lda     _marker
 	lda     _tmp
 	clc
 	adc     #$09
-	bcc     L10B3
+	bcc     L10BC
 	inx
-L10B3:	jsr     shlax4
+L10BC:	jsr     shlax4
 	stx     tmp1
 	asl     a
 	rol     tmp1
@@ -9015,206 +9049,206 @@ L10B3:	jsr     shlax4
 ;
 ; switch (marker) {
 ;
-L130B:	lda     _marker
+L1316:	lda     _marker
 ;
 ; }
 ;
-	beq     L10B9
+	beq     L10C2
 	cmp     #$01
-	beq     L10C1
+	beq     L10CA
 	cmp     #$02
-	beq     L10C9
+	beq     L10D2
 	cmp     #$03
-	jeq     L10D1
+	jeq     L10DA
 	cmp     #$04
-	jeq     L10D9
+	jeq     L10E2
 	cmp     #$05
-	jeq     L10E1
+	jeq     L10EA
 	cmp     #$06
-	jeq     L10E9
+	jeq     L10F2
 	cmp     #$07
-	jeq     L10F1
+	jeq     L10FA
 	cmp     #$08
-	jeq     L10F9
+	jeq     L1102
 	cmp     #$09
-	jeq     L1101
-	jmp     L130C
+	jeq     L110A
+	jmp     L1317
 ;
 ; case 0: process_end_game_string_print(0x09, 0x0B, "ONE THOUSAND MAN", 0); break;
 ;
-L10B9:	jsr     decsp4
+L10C2:	jsr     decsp4
 	lda     #$09
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0B
 	dey
 	sta     (sp),y
-	lda     #<(L10BD)
+	lda     #<(L10C6)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10BD)
-	jmp     L130E
+	lda     #>(L10C6)
+	jmp     L1319
 ;
 ; case 1: process_end_game_string_print(0x09, 0x0A, "GAME CREATED BY", 0x0B); break;
 ;
-L10C1:	jsr     decsp4
+L10CA:	jsr     decsp4
 	lda     #$09
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0A
 	dey
 	sta     (sp),y
-	lda     #<(L10C5)
+	lda     #<(L10CE)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10C5)
+	lda     #>(L10CE)
 	sta     (sp),y
 	lda     #$0B
-	jmp     L1305
+	jmp     L1310
 ;
 ; case 2: process_end_game_string_print(0x0A, 0x0C, "SPERLINGSKAUZ", 0); break;
 ;
-L10C9:	jsr     decsp4
+L10D2:	jsr     decsp4
 	lda     #$0A
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0C
 	dey
 	sta     (sp),y
-	lda     #<(L10CD)
+	lda     #<(L10D6)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10CD)
-	jmp     L130E
+	lda     #>(L10D6)
+	jmp     L1319
 ;
 ; case 3: process_end_game_string_print(0x08, 0x0A, "ORIGINAL COMICS BY", 0x0C); break;
 ;
-L10D1:	jsr     decsp4
+L10DA:	jsr     decsp4
 	lda     #$08
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0A
 	dey
 	sta     (sp),y
-	lda     #<(L10D5)
+	lda     #<(L10DE)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10D5)
+	lda     #>(L10DE)
 	sta     (sp),y
 	lda     #$0C
-	jmp     L1305
+	jmp     L1310
 ;
 ; case 4: process_end_game_string_print(0x0A, 0x0C, "CYNIC MANSION", 0); break;
 ;
-L10D9:	jsr     decsp4
+L10E2:	jsr     decsp4
 	lda     #$0A
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0C
 	dey
 	sta     (sp),y
-	lda     #<(L10DD)
+	lda     #<(L10E6)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10DD)
-	jmp     L130E
+	lda     #>(L10E6)
+	jmp     L1319
 ;
 ; case 5: process_end_game_string_print(0x08, 0x0A, "SPECIAL THANKS TO", 0x0C); break;
 ;
-L10E1:	jsr     decsp4
+L10EA:	jsr     decsp4
 	lda     #$08
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0A
 	dey
 	sta     (sp),y
-	lda     #<(L10E5)
+	lda     #<(L10EE)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10E5)
+	lda     #>(L10EE)
 	sta     (sp),y
 	lda     #$0C
-	jmp     L1305
+	jmp     L1310
 ;
 ; case 6: process_end_game_string_print(0x0E, 0x0C, "SHIRU", 0); break;
 ;
-L10E9:	jsr     decsp4
+L10F2:	jsr     decsp4
 	lda     #$0E
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0C
 	dey
 	sta     (sp),y
-	lda     #<(L10ED)
+	lda     #<(L10F6)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10ED)
-	jmp     L130E
+	lda     #>(L10F6)
+	jmp     L1319
 ;
 ; case 7: process_end_game_string_print(0x0D, 0x0C, "NESDOUG", 0); break;
 ;
-L10F1:	jsr     decsp4
+L10FA:	jsr     decsp4
 	lda     #$0D
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0C
 	dey
 	sta     (sp),y
-	lda     #<(L10F5)
+	lda     #<(L10FE)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10F5)
-	jmp     L130E
+	lda     #>(L10FE)
+	jmp     L1319
 ;
 ; case 8: process_end_game_string_print(0x06, 0x0A, " ", 0x0C); break;
 ;
-L10F9:	jsr     decsp4
+L1102:	jsr     decsp4
 	lda     #$06
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0A
 	dey
 	sta     (sp),y
-	lda     #<(L10FD)
+	lda     #<(L1106)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L10FD)
+	lda     #>(L1106)
 	sta     (sp),y
 	lda     #$0C
-	jmp     L1305
+	jmp     L1310
 ;
 ; case 9: process_end_game_string_print(0x06, 0x0B, "THANK YOU FOR PLAYING!", 0); break;
 ;
-L1101:	jsr     decsp4
+L110A:	jsr     decsp4
 	lda     #$06
 	ldy     #$03
 	sta     (sp),y
 	lda     #$0B
 	dey
 	sta     (sp),y
-	lda     #<(L1105)
+	lda     #<(L110E)
 	ldy     #$00
 	sta     (sp),y
 	iny
-	lda     #>(L1105)
-L130E:	sta     (sp),y
+	lda     #>(L110E)
+L1319:	sta     (sp),y
 	lda     #$00
-L1305:	jsr     _process_end_game_string_print
+L1310:	jsr     _process_end_game_string_print
 ;
 ; if (pad1_new & PAD_START) break;
 ;
-L130C:	lda     _pad1_new
+L1317:	lda     _pad1_new
 	and     #$10
-	jeq     L108C
+	jeq     L1095
 	jmp     _music_stop
 
 .endproc
@@ -9234,12 +9268,12 @@ L130C:	lda     _pad1_new
 ;
 	lda     _game+3
 	cmp     #$03
-	bne     L110C
+	bne     L1115
 	jsr     _process_game_win
 ;
 ; pal_bg(game_palette_bg);
 ;
-L110C:	lda     #<(_game_palette_bg)
+L1115:	lda     #<(_game_palette_bg)
 	ldx     #>(_game_palette_bg)
 	jsr     _pal_bg
 ;
@@ -9267,17 +9301,17 @@ L110C:	lda     #<(_game_palette_bg)
 ;
 	lda     #$00
 	sta     _x
-L130F:	lda     _x
+L131A:	lda     _x
 	cmp     #$40
-	beq     L1118
+	beq     L1121
 	lda     #$00
 	jsr     _vram_put
 	inc     _x
-	jmp     L130F
+	jmp     L131A
 ;
 ; vram_adr(NAMETABLE_A);
 ;
-L1118:	ldx     #$20
+L1121:	ldx     #$20
 	lda     #$00
 	jsr     _vram_adr
 ;
@@ -9285,17 +9319,17 @@ L1118:	ldx     #$20
 ;
 	lda     #$00
 	sta     _x
-L1310:	lda     _x
+L131B:	lda     _x
 	cmp     #$20
-	beq     L1124
+	beq     L112D
 ;
 ; for(y = 0x00; y != 0x1D; ++y) 
 ;
 	lda     #$00
 	sta     _y
-L1311:	lda     _y
+L131C:	lda     _y
 	cmp     #$1D
-	beq     L1312
+	beq     L131D
 ;
 ; vram_put(CHR_BG_BLANK);
 ;
@@ -9305,20 +9339,20 @@ L1311:	lda     _y
 ; for(y = 0x00; y != 0x1D; ++y) 
 ;
 	inc     _y
-	jmp     L1311
+	jmp     L131C
 ;
 ; for (x = 0x00; x != 0x20; ++x) 
 ;
-L1312:	inc     _x
-	jmp     L1310
+L131D:	inc     _x
+	jmp     L131B
 ;
 ; put_str(NTADR_A(0x0B, 0x0B), "GAME OVER");
 ;
-L1124:	ldx     #$21
+L112D:	ldx     #$21
 	lda     #$6B
 	jsr     pushax
-	lda     #<(L113C)
-	ldx     #>(L113C)
+	lda     #<(L1145)
+	ldx     #>(L1145)
 	jsr     _put_str
 ;
 ; put_str(NTADR_A(0x05, 0x10), "PRESS START TO RETURN");
@@ -9326,8 +9360,8 @@ L1124:	ldx     #$21
 	ldx     #$22
 	lda     #$05
 	jsr     pushax
-	lda     #<(L1145)
-	ldx     #>(L1145)
+	lda     #<(L114E)
+	ldx     #>(L114E)
 	jsr     _put_str
 ;
 ; put_str(NTADR_A(0x09, 0x11), "TO MAIN MENU");
@@ -9335,8 +9369,8 @@ L1124:	ldx     #$21
 	ldx     #$22
 	lda     #$29
 	jsr     pushax
-	lda     #<(L114E)
-	ldx     #>(L114E)
+	lda     #<(L1157)
+	ldx     #>(L1157)
 	jsr     _put_str
 ;
 ; put_str(NTADR_A(0x06, 0x0D), "FINAL SCORE");
@@ -9344,8 +9378,8 @@ L1124:	ldx     #$21
 	ldx     #$21
 	lda     #$A6
 	jsr     pushax
-	lda     #<(L1157)
-	ldx     #>(L1157)
+	lda     #<(L1160)
+	ldx     #>(L1160)
 	jsr     _put_str
 ;
 ; put_number(NTADR_A(0x11, 0x0D), score, 2);
@@ -9380,13 +9414,13 @@ L1124:	ldx     #$21
 ;
 ; nmi_wait_and_prepare();
 ;
-L1165:	jsr     _nmi_wait_and_prepare
+L116E:	jsr     _nmi_wait_and_prepare
 ;
 ; if (pad1_new & PAD_START) break;
 ;
 	lda     _pad1_new
 	and     #$10
-	beq     L1165
+	beq     L116E
 ;
 ; game.state = GAME_ST_MENU;
 ;
@@ -9411,17 +9445,17 @@ L1165:	jsr     _nmi_wait_and_prepare
 ;
 	lda     #$00
 	sta     _x
-L1314:	lda     _x
+L131F:	lda     _x
 	cmp     #$09
-	beq     L1173
+	beq     L117C
 	lda     #$7F
 	jsr     _vram_put
 	inc     _x
-	jmp     L1314
+	jmp     L131F
 ;
 ; ppu_on_all();
 ;
-L1173:	jsr     _ppu_on_all
+L117C:	jsr     _ppu_on_all
 ;
 ; fade_out();
 ;
@@ -9454,9 +9488,9 @@ L1173:	jsr     _ppu_on_all
 ;
 	lda     #$00
 	sta     _x
-L1316:	lda     _x
+L1321:	lda     _x
 	cmp     #$40
-	beq     L0511
+	beq     L050F
 ;
 ; vram_put(pallete[x]);
 ;
@@ -9474,11 +9508,11 @@ L1316:	lda     _x
 ; for(x = 0x00; x != 0x40; ++x) {
 ;
 	inc     _x
-	jmp     L1316
+	jmp     L1321
 ;
 ; }
 ;
-L0511:	jmp     incsp2
+L050F:	jmp     incsp2
 
 .endproc
 
@@ -9495,22 +9529,24 @@ L0511:	jmp     incsp2
 ;
 ; game_initial_values_set();
 ;
-L117F:	jsr     _game_initial_values_set
+L1188:	jsr     _game_initial_values_set
 ;
 ; process_title();
 ;
 	jsr     _process_title
 ;
+; points = 99;
+;
+	lda     #$63
+	sta     _points
+;
 ; if (points == 99) process_upgrades();
 ;
-	lda     _points
-	cmp     #$63
-	bne     L1185
 	jsr     _process_upgrades
 ;
 ; process_main_game();
 ;
-L1185:	jsr     _process_main_game
+	jsr     _process_main_game
 ;
 ; process_game_end();
 ;
@@ -9518,7 +9554,7 @@ L1185:	jsr     _process_main_game
 ;
 ; while (1) {
 ;
-	jmp     L117F
+	jmp     L1188
 
 .endproc
 
