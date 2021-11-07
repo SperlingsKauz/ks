@@ -1479,7 +1479,6 @@ void main (void) {
 	while (1) {
 		game_initial_values_set();
 		process_title();
-		points = 99;
 		if (points == 99) process_upgrades();
 		process_main_game();
 		process_game_end();
